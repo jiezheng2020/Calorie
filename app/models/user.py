@@ -9,7 +9,15 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  height = db.Column(db.Integer, nullable=True)
+  weight = db.Column(db.Integer, nullable=True)
+  age = db.Column(db.Integer, nullable=True)
+  gender = db.Column(db.Integer, nullable=True)
+  dailyGoal = db.Column(db.Integer, nullable=False, default=2000)
 
+  diaries_owned= db.relationship('Diary', back_populates='owner')
+  weight_progress = db.relationship('WeightProgress', back_populates='progress_owner')
+  calorie_progress = db.relationship('CalorieProgress', back_populates='calorie_owner')
 
   @property
   def password(self):
@@ -29,5 +37,6 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
+      "email": self.email,
+      "dailyGoal": self.dailyGoal
     }
