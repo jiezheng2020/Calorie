@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { login } from "../../store/session";
+import "./AuthForm.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -31,34 +32,56 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
+    <div className="auth-container">
+      <div className="form-image-container" />
+      <div className="form-container">
+        <div className="form-header">
+          <h2>Welcome back to Calorie</h2>
+          <div className="form-header-text">Get back into your routine!</div>
+        </div>
+        <div className="form-content-container">
+          <form onSubmit={onLogin}>
+            <div className="form-fields">
+              <label htmlFor="email">Email</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  name="email"
+                  type="text"
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </div>
+            </div>
+            <div className="form-fields">
+              <label htmlFor="password">Password</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={updatePassword}
+                />
+              </div>
+            </div>
+            <Link className="account-redirect" to="/sign-up">
+              <div>Don't have an account? Register now!</div>
+            </Link>
+            <button className="userform-btn" type="submit">
+              Login
+            </button>
+            <button className="demo-btn">Demo</button>
+            <div className="image2-form-container"></div>
+            <div>
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
+            </div>
+          </form>
+        </div>
       </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

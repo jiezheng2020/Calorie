@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux"
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, Link } from "react-router-dom";
+import { signUp } from "../../store/session";
+import "./AuthForm.css";
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -39,46 +40,78 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
+    <div className="auth-container">
+      <div className="form-image-container" />
+      <div className="form-container">
+        <div className="form-header">
+          <h2>Welcome To Calorie</h2>
+          <div className="form-header-text">
+            Get started on your fitness journey today!
+          </div>
+        </div>
+        <div className="form-content-container">
+          <form onSubmit={onSignUp}>
+            <div className="form-fields">
+              <label>User Name</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  type="text"
+                  name="username"
+                  onChange={updateUsername}
+                  value={username}
+                ></input>
+              </div>
+            </div>
+            <div className="form-fields">
+              <label>Email</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  type="text"
+                  name="email"
+                  onChange={updateEmail}
+                  value={email}
+                ></input>
+              </div>
+            </div>
+            <div className="form-fields">
+              <label>Password</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  type="password"
+                  name="password"
+                  onChange={updatePassword}
+                  value={password}
+                ></input>
+              </div>
+            </div>
+            <div className="form-fields">
+              <label>Repeat Password</label>
+              <div>
+                <input
+                  className="form-field-input"
+                  type="password"
+                  name="repeat_password"
+                  onChange={updateRepeatPassword}
+                  value={repeatPassword}
+                  required={true}
+                ></input>
+              </div>
+            </div>
+            <Link className="account-redirect" to="/login">
+              <div>Already have an account? Login here!</div>
+            </Link>
+            <button className="userform-btn" type="submit">
+              Sign Up
+            </button>
+            <button className="demo-btn">Demo</button>
+            <div className="image-form-container"></div>
+          </form>
+        </div>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    </div>
   );
 };
 
