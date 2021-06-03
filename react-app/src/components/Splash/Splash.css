@@ -17,11 +17,13 @@
   flex-direction: row;
   text-align: left;
   justify-content: center;
+  text-shadow: 0px 8px 20px rgba(0, 0, 0, 1);
 }
 
 .page1-header {
   font-weight: 100;
 }
+
 .page1-buttons {
   display: flex;
   margin-top: 60px;
@@ -33,14 +35,16 @@
   color: white;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 16px 36px;
   opacity: 0.9;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in, box-shadow 0.2s ease-in;
   margin-right: 20px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
 }
 
 .page1-buttons > button:hover {
+  box-shadow: 0px 8px 20px #323232;
   cursor: pointer;
   opacity: 1;
 }
@@ -51,6 +55,7 @@
   width: 50%;
   height: 60%;
   border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 1);
 }
 .page1-right {
   margin-left: 60px;
