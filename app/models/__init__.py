@@ -5,3 +5,5 @@ from .foodentry import FoodEntry
 from .food import Food
 from .exercise import Exercise
 from .exerciseentry import ExerciseEntry
+from .weightprogress import WeightProgress
+from .calorieprogress import CalorieProgress
