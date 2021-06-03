@@ -20,7 +20,7 @@ import {
 
 import "./Splash.css";
 
-const FadeAnimation = batch(Move(0, 1000, 0, -200), Sticky(), Fade());
+const FadeAnimation = batch(Move(0, 1000, 0, -200), Sticky(), FadeOut(1, 0));
 
 function Splash() {
   const user = useSelector((state) => state.session.user);
