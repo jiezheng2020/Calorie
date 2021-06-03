@@ -40,48 +40,60 @@ function Splash() {
         <ScrollPage page={0}>
           <Animator animation={FadeAnimation}>
             <div className="page page1">
-              <h2>Welcome to Calorie!</h2>
-              <div className="page1-header">
-                <div>Free online calorie counter and diet plan.</div>
-              </div>
-              <div className="page1-buttons">
-                <button onClick={() => history.push("/login")}>Login</button>
-                <button onClick={() => history.push("/sign-up")}>SignUp</button>
-                <button onClick={() => handleDemo()}>Demo</button>
-              </div>
               <div className="page1-image"></div>
+              <div className="page1-right">
+                <h2>Welcome to Calorie!</h2>
+                <div className="page1-header">
+                  Free online calorie counter and diet plan.
+                </div>
+                <div className="page1-buttons">
+                  <button onClick={() => history.push("/login")}>Login</button>
+                  <button onClick={() => history.push("/sign-up")}>
+                    SignUp
+                  </button>
+                  <button onClick={() => handleDemo()}>Demo</button>
+                </div>
+              </div>
             </div>
           </Animator>
         </ScrollPage>
         <ScrollPage page={1}>
           <Animator animation={FadeAnimation}>
             <div className="page page1">
-              <h2>Welcome to Calorie!</h2>
-              <div className="page1-header">
-                <div>Free online calorie counter and diet plan.</div>
-              </div>
-              <div className="page1-buttons">
-                <button>Login</button>
-                <button>SignUp</button>
-                <button>Demo</button>
-              </div>
               <div className="page1-image"></div>
+              <div className="page1-right">
+                <h2>Welcome to Calorie!</h2>
+                <div className="page1-header">
+                  Free online calorie counter and diet plan.
+                </div>
+                <div className="page1-buttons">
+                  <button onClick={() => history.push("/login")}>Login</button>
+                  <button onClick={() => history.push("/sign-up")}>
+                    SignUp
+                  </button>
+                  <button onClick={() => handleDemo()}>Demo</button>
+                </div>
+              </div>
             </div>
           </Animator>
         </ScrollPage>
         <ScrollPage page={2}>
           <Animator animation={FadeAnimation}>
             <div className="page page1">
-              <h2>Welcome to Calorie!</h2>
-              <div className="page1-header">
-                <div>Free online calorie counter and diet plan.</div>
-              </div>
-              <div className="page1-buttons">
-                <button>Login</button>
-                <button>SignUp</button>
-                <button>Demo</button>
-              </div>
               <div className="page1-image"></div>
+              <div className="page1-right">
+                <h2>Welcome to Calorie!</h2>
+                <div className="page1-header">
+                  Free online calorie counter and diet plan.
+                </div>
+                <div className="page1-buttons">
+                  <button onClick={() => history.push("/login")}>Login</button>
+                  <button onClick={() => history.push("/sign-up")}>
+                    SignUp
+                  </button>
+                  <button onClick={() => handleDemo()}>Demo</button>
+                </div>
+              </div>
             </div>
           </Animator>
         </ScrollPage>
