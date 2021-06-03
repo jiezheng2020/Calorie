@@ -27,6 +27,12 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const handleDemo = async () => {
+    setEmail("demo@aa.io");
+    setPassword("password");
+    await dispatch(login(email, password));
+  };
+
   if (user) {
     return <Redirect to="/" />;
   }
@@ -71,7 +77,9 @@ const LoginForm = () => {
             <button className="userform-btn" type="submit">
               Login
             </button>
-            <button className="demo-btn">Demo</button>
+            <button onClick={() => handleDemo()} className="demo-btn">
+              Demo
+            </button>
             <div className="image2-form-container"></div>
             <div>
               {errors.map((error) => (

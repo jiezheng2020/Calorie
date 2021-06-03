@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import { signUp } from "../../store/session";
+import { signUp, login } from "../../store/session";
 import "./AuthForm.css";
 
 const SignUpForm = () => {
@@ -9,13 +9,20 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password));
+      if (data.errors) {
+        setErrors(data.errors);
+      }
+    } else {
+      setErrors(["password: Passwords must match"]);
     }
   };
 
@@ -35,6 +42,10 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const handleDemo = async () => {
+    const data = await dispatch(login("demo@aa.io", "password"));
+  };
+
   if (user) {
     return <Redirect to="/" />;
   }
@@ -44,7 +55,7 @@ const SignUpForm = () => {
       <div className="form-image-container" />
       <div className="form-container">
         <div className="form-header">
-          <h2>Welcome To Calorie</h2>
+          <h2>Welcome to Calorie</h2>
           <div className="form-header-text">
             Get started on your fitness journey today!
           </div>
@@ -106,8 +117,15 @@ const SignUpForm = () => {
             <button className="userform-btn" type="submit">
               Sign Up
             </button>
-            <button className="demo-btn">Demo</button>
+            <button onClick={() => handleDemo()} className="demo-btn">
+              Demo
+            </button>
             <div className="image-form-container"></div>
+            <div>
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
+            </div>
           </form>
         </div>
       </div>
