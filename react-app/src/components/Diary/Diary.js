@@ -36,8 +36,11 @@ const Diary = () => {
         ></input>
       </div>
       <div className="diary-food-container">
-        <h2 className="diary-container-label">Meals</h2>
-        <div className="diary-meal-containers top-meal">
+        <div className="diary-food-header">
+          <h2 className="diary-container-label">Meals</h2>
+          <h2 className="diary-container-label"> Calories</h2>
+        </div>
+        <div className="diary-meal-containers">
           <div className="diary-meal-label"> Breakfast</div>
           <div className="diary-meal-subcontainer">
             <div>Food1</div>
@@ -66,7 +69,10 @@ const Diary = () => {
         </div>
       </div>
       <div className="diary-food-container">
-        <h2 className="diary-container-label">Exercise</h2>
+        <div className="diary-food-header">
+          <h2 className="diary-container-label">Exercise</h2>
+          <h2 className="diary-container-label"> Calories</h2>
+        </div>
         <div className="diary-exercise-containers"></div>
       </div>
     </div>
