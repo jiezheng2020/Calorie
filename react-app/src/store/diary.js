@@ -1,3 +1,5 @@
+import { bindActionCreators } from "redux";
+
 const GET_DIARIES = "diary/GET_DIARIES";
 
 const getDiaries = (diary) => {
@@ -18,3 +20,14 @@ export const fetchDiaries = () => async (dispatch) => {
     // dispatch(getDiary(diary));
   }
 };
+
+const initialState = {};
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_DIARIES: {
+      return action.diary;
+    }
+    default:
+      return state;
+  }
+}
