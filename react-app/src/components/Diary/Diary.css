@@ -1,0 +1,52 @@
+.diary-container {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  margin: 30px auto;
+}
+.diary-header {
+  display: flex;
+  align-items: center;
+}
+
+.diary-header-text {
+  font-size: 20px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+.date-input {
+  background: #325288;
+  color: white;
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 35px;
+  position: relative;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+}
+
+.diary-food-container {
+  background-color: white;
+  border-radius: 10px;
+  border: #bac0cc solid 1px;
+  margin-top: 2%;
+  padding: 20px;
+}
+.top-meal {
+  border-top: #bac0cc solid 1px;
+}
+.diary-meal-containers {
+  border-bottom: #bac0cc solid 1px;
+}
+
+.diary-meal-label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.diary-container-label {
+  font-weight: bolder;
+  font-size: 30px;
+}
