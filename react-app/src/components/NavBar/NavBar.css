@@ -1,0 +1,20 @@
+.navbar {
+  background-color: #325288;
+  font-family: "Roboto", sans-serif;
+  border-bottom: #b4a3e9 solid thin;
+}
+
+.navbar-brand {
+  font-weight: bolder !important;
+  color: white !important;
+}
+
+a.nav-link {
+  font-weight: bold !important;
+  color: white !important;
+  opacity: 0.8;
+}
+
+a.nav-link:hover {
+  opacity: 1;
+}
