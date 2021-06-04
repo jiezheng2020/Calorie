@@ -6,21 +6,6 @@ import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    // <nav className="">
-    //   <NavLink to="/" exact={true} activeClassName="active">
-    //     Home
-    //   </NavLink>
-    //   <NavLink to="/login" exact={true} activeClassName="active">
-    //     Diary
-    //   </NavLink>
-    //   <NavLink to="/sign-up" exact={true} activeClassName="active">
-    //     Report
-    //   </NavLink>
-    //   <NavLink to="/users" exact={true} activeClassName="active">
-    //     Profile
-    //   </NavLink>
-    //   <LogoutButton />
-    // </nav>
     <Navbar collapseOnSelect className="navbar" expand="lg">
       <Navbar.Brand className="navbar-brand" href="/">
         Calorie

@@ -43,7 +43,7 @@ const SignUpForm = () => {
   };
 
   const handleDemo = async () => {
-    const data = await dispatch(login("demo@aa.io", "password"));
+    await dispatch(login("demo@aa.io", "password"));
   };
 
   if (user) {
