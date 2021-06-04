@@ -12,12 +12,9 @@ const getDiaries = (diary) => {
 export const fetchDiaries = () => async (dispatch) => {
   const res = await fetch("/api/diary/");
 
-  console.log(res);
-
   if (res.ok) {
     const diary = await res.json();
-    console.log(diary);
-    // dispatch(getDiary(diary));
+    dispatch(getDiaries(diary));
   }
 };
 

@@ -1,12 +1,20 @@
 from app.models import db,Diary
-from datetime import datetime
+from datetime import datetime, timedelta
+from random import randint
+
 
 def seed_diaries():
-    demo = Diary(
-        user_id =1,
-        date= datetime.utcnow())
+    diaries = []
 
-    db.session.add(demo)
+    for i in range(5):
+        diary = Diary(
+            user_id=1,
+            date= datetime.utcnow() + timedelta(days=i)
+        )
+        diaries.append(diary)
+
+
+    db.session.add_all(diaries)
     db.session.commit()
 
 def undo_diaries():

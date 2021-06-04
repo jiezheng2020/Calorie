@@ -10,4 +10,4 @@ diary_routes = Blueprint('diaries', __name__)
 def get_diary():
     diary = Diary.query.filter((Diary.user_id == current_user.id)).all()
 
-    return jsonify(diaries.to_dict() for diaries in diary)
+    return jsonify([diaries.to_dict() for diaries in diary])
