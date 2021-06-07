@@ -37,14 +37,13 @@ export const createDiaries = (currDate) => async (dispatch) => {
 
   if (res.ok) {
     const diary = await res.json();
-    console.log(diary);
     dispatch(createDiary(diary));
+    return diary;
   }
 };
 
 const initialState = {};
 export default function reducer(state = initialState, action) {
-  console.log(state);
   let newState = {};
   switch (action.type) {
     case GET_DIARIES: {

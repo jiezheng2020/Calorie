@@ -8,7 +8,7 @@ diary_routes = Blueprint('diaries', __name__)
 @diary_routes.route('/')
 @login_required
 def get_diary():
-    diary = Diary.query.filter((Diary.user_id == current_user.id)).all()
+    diary = Diary.query.filter(Diary.user_id == current_user.id).all()
 
     return jsonify([diaries.to_dict() for diaries in diary])
 
@@ -17,6 +17,13 @@ def get_diary():
 def create_diary():
     data = request.json
     currDate = data["currDate"]
+
+    diary = Diary.query.filter(Diary.user_id == current_user.id).all()
+    diaryArray = [diaries.to_dict() for diaries in diary]
+
+    for check in diaryArray:
+        if check['date'].find(currDate) == True:
+            return {'message': 'diary already exists'}
 
     newDiary = Diary(user_id = current_user.id, date=currDate)
     db.session.add(newDiary)

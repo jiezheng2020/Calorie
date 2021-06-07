@@ -54,10 +54,12 @@ const Diary = () => {
         Number(currDate.split("-")[1]) - 1,
         Number(currDate.split("-")[2])
       );
-      await dispatch(createDiaries(postDate));
+      const diary = await dispatch(createDiaries(postDate));
+
+      await setCurrDiary(diary[0]);
     }
   };
-
+  console.log(currDiary);
   return (
     <div className="diary-container">
       <div className="diary-header">
