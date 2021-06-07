@@ -46,10 +46,14 @@ const Diary = () => {
       setTotalCal(0);
     }
   }, [currDiary]);
+  console.log(currDiary);
 
   const handleCreate = async () => {
-    await dispatch(createDiaries(currDate));
+    if (!currDiary) {
+      await dispatch(createDiaries(currDate));
+    }
   };
+
   return (
     <div className="diary-container">
       <div className="diary-header">
