@@ -57,7 +57,7 @@ const Diary = () => {
         Number(currDate.split("-")[2])
       );
       const diary = await dispatch(createDiaries(postDate));
-      setCurrDiary(diary);
+      await setCurrDiary(diary);
     }
     setexerciseModalShow(true);
   };
