@@ -34,7 +34,7 @@ const Diary = () => {
     } else {
       setTotalCal(0);
     }
-  }, [currDiary]);
+  }, [currDiary, diaries]);
 
   const handleCreateFood = async () => {
     if (!currDiary) {
