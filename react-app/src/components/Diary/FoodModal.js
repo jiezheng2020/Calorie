@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFoods } from "../../store/food";
+import { createFoodEntry } from "../../store/diary";
 import "./Modal.css";
 
 function FoodModal(props) {
+  const DiaryId = useSelector((state) => state.diaries[0]?.id);
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setsearchResults] = useState([]);
@@ -31,10 +33,17 @@ function FoodModal(props) {
     }
   }, [searchInput]);
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     props.onHide();
-    console.log(defaultFood);
-    console.log(customFood);
+    if (defaultFood !== "") {
+      const newFood = {
+        foodId: defaultFood.id,
+        diaryId: DiaryId,
+        mealType: mealType,
+        totalCalories: serving * defaultFood.calories,
+      };
+      await dispatch(createFoodEntry(newFood));
+    }
   };
 
   const handledefaultFood = (result) => {
@@ -42,8 +51,6 @@ function FoodModal(props) {
     setSearchInput("");
     setsearchResults("");
   };
-  console.log(defaultFood);
-
   return (
     <Modal
       {...props}

@@ -25,6 +25,7 @@ export default function reducer(state = initialState, action) {
     case GET_FOODS: {
       return action.foods;
     }
+
     default:
       return state;
   }
