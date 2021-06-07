@@ -46,11 +46,15 @@ const Diary = () => {
       setTotalCal(0);
     }
   }, [currDiary]);
-  console.log(currDiary);
 
   const handleCreate = async () => {
     if (!currDiary) {
-      await dispatch(createDiaries(currDate));
+      const postDate = new Date(
+        Number(currDate.split("-")[0]),
+        Number(currDate.split("-")[1]) - 1,
+        Number(currDate.split("-")[2])
+      );
+      await dispatch(createDiaries(postDate));
     }
   };
 

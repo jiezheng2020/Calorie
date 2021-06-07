@@ -12,7 +12,7 @@ const getDiaries = (diary) => {
 
 const createDiary = (diary) => {
   return {
-    type: GET_DIARIES,
+    type: CREATE_DIARY,
     diary,
   };
 };
@@ -38,12 +38,13 @@ export const createDiaries = (currDate) => async (dispatch) => {
   if (res.ok) {
     const diary = await res.json();
     console.log(diary);
-    // dispatch(createDiary(diary));
+    dispatch(createDiary(diary));
   }
 };
 
 const initialState = {};
 export default function reducer(state = initialState, action) {
+  console.log(state);
   let newState = {};
   switch (action.type) {
     case GET_DIARIES: {
@@ -51,8 +52,8 @@ export default function reducer(state = initialState, action) {
     }
 
     case CREATE_DIARY: {
-      const diaryLength = state.diaries.length();
-      newState = { ...state, [diaryLength]: action.diary };
+      newState = { ...state, ...action.diary };
+
       return newState;
     }
     default:

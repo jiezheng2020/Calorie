@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from sqlalchemy import and_
-from app.models import Diary
+from app.models import Diary, db
 
 diary_routes = Blueprint('diaries', __name__)
 
@@ -17,3 +17,8 @@ def get_diary():
 def create_diary():
     data = request.json
     currDate = data["currDate"]
+
+    newDiary = Diary(user_id = current_user.id, date=currDate)
+    db.session.add(newDiary)
+    db.session.commit()
+    return jsonify([newDiary.to_dict()])
