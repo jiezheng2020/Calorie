@@ -51,7 +51,8 @@ export default function reducer(state = initialState, action) {
     }
 
     case CREATE_DIARY: {
-      newState = { ...state, [action.diary.id]: action.diary };
+      const diaryLength = state.diaries.length();
+      newState = { ...state, [diaryLength]: action.diary };
       return newState;
     }
     default:
