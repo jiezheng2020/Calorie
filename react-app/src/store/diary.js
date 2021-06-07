@@ -27,6 +27,7 @@ export const fetchDiaries = (currDate) => async (dispatch) => {
     );
 
     dispatch(getDiaries(userDiary));
+    return userDiary;
   }
 };
 

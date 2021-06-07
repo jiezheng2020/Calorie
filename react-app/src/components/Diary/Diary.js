@@ -13,27 +13,12 @@ const Diary = () => {
     new Date().toISOString().split("T")[0]
   );
   const [totalCal, setTotalCal] = useState(0);
-
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchDiaries(currDate));
+  useEffect(async () => {
+    const res = await dispatch(fetchDiaries(currDate));
+    await setCurrDiary(res[0]);
   }, [dispatch, currDate]);
-
-  useEffect(() => {
-    if (diaries.length) {
-      setCurrDiary(diaries.filter((diary) => diary.date.includes(currDate))[0]);
-    }
-  }, [diaries, currDate]);
-  const breakfastFood = currDiary?.diaryFoods?.filter(
-    (food) => food.mealType === "breakfast"
-  );
-  const lunchFood = currDiary?.diaryFoods?.filter(
-    (food) => food.mealType === "lunch"
-  );
-  const dinnerFood = currDiary?.diaryFoods?.filter(
-    (food) => food.mealType === "dinner"
-  );
 
   useEffect(() => {
     if (currDiary) {
@@ -59,6 +44,16 @@ const Diary = () => {
       await setCurrDiary(diary[0]);
     }
   };
+
+  const breakfastFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "breakfast"
+  );
+  const lunchFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "lunch"
+  );
+  const dinnerFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "dinner"
+  );
 
   return (
     <div className="diary-container">
