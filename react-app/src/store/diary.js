@@ -42,16 +42,16 @@ export const createDiaries = (currDate) => async (dispatch) => {
   }
 };
 
-const initialState = {};
+const initialState = [];
 export default function reducer(state = initialState, action) {
-  let newState = {};
+  let newState = [];
   switch (action.type) {
     case GET_DIARIES: {
       return action.diary;
     }
 
     case CREATE_DIARY: {
-      newState = { ...state, ...action.diary };
+      newState = [...state, action.diary];
 
       return newState;
     }

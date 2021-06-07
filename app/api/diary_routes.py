@@ -28,4 +28,4 @@ def create_diary():
     newDiary = Diary(user_id = current_user.id, date=currDate)
     db.session.add(newDiary)
     db.session.commit()
-    return jsonify([newDiary.to_dict()])
+    return newDiary.to_dict()
