@@ -17,12 +17,16 @@ const createDiary = (diary) => {
   };
 };
 
-export const fetchDiaries = () => async (dispatch) => {
+export const fetchDiaries = (currDate) => async (dispatch) => {
   const res = await fetch("/api/diary/");
 
   if (res.ok) {
     const diary = await res.json();
-    dispatch(getDiaries(diary));
+    const userDiary = diary.filter((diaries) =>
+      diaries.date.includes(currDate)
+    );
+
+    dispatch(getDiaries(userDiary));
   }
 };
 

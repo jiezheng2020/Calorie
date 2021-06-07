@@ -17,8 +17,8 @@ const Diary = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDiaries());
-  }, [dispatch]);
+    dispatch(fetchDiaries(currDate));
+  }, [dispatch, currDate]);
 
   useEffect(() => {
     if (diaries.length) {
@@ -59,7 +59,7 @@ const Diary = () => {
       await setCurrDiary(diary[0]);
     }
   };
-  console.log(currDiary);
+
   return (
     <div className="diary-container">
       <div className="diary-header">
