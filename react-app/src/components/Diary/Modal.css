@@ -1,0 +1,32 @@
+.add-meal-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-meal-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-meal-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results {
+  position: absolute;
+  height: 100px;
+  top: 80px;
+  overflow: auto;
+}
+
+.add-meal-bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.modal-content {
+  width: 600px;
+  margin: auto;
+}
