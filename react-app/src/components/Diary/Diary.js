@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchDiaries, createDiaries } from "../../store/diary";
 import FoodModal from "./FoodModal";
+import ExerciseModal from "./ExerciseModal";
 
 import "./Diary.css";
 
 const Diary = () => {
   const user = useSelector((state) => state.session.user);
   const diaries = useSelector((state) => state.diaries);
-  const [modalShow, setModalShow] = useState(false);
+  const [foodmodalShow, setfoodModalShow] = useState(false);
+  const [exerciseModalShow, setexerciseModalShow] = useState(false);
   const [currDiary, setCurrDiary] = useState([]);
   const [currDate, setcurrDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -34,7 +36,7 @@ const Diary = () => {
     }
   }, [currDiary]);
 
-  const handleCreate = async () => {
+  const handleCreateFood = async () => {
     if (!currDiary) {
       const postDate = new Date(
         Number(currDate.split("-")[0]),
@@ -42,12 +44,23 @@ const Diary = () => {
         Number(currDate.split("-")[2])
       );
       const diary = await dispatch(createDiaries(postDate));
-
-      await setCurrDiary(diary[0]);
+      setCurrDiary(diary);
     }
+    setfoodModalShow(true);
   };
 
-  const addMeal = async () => {};
+  const handleCreateExercise = async () => {
+    if (!currDiary) {
+      const postDate = new Date(
+        Number(currDate.split("-")[0]),
+        Number(currDate.split("-")[1]) - 1,
+        Number(currDate.split("-")[2])
+      );
+      const diary = await dispatch(createDiaries(postDate));
+      setCurrDiary(diary);
+    }
+    setexerciseModalShow(true);
+  };
 
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"
@@ -75,7 +88,7 @@ const Diary = () => {
           <h2 className="diary-container-label">
             Meals
             <i
-              onClick={() => setModalShow(true)}
+              onClick={() => handleCreateFood()}
               class="fas fa-plus-circle add-meals"
             ></i>
           </h2>
@@ -158,7 +171,10 @@ const Diary = () => {
         <div className="diary-food-header">
           <h2 className="diary-container-label">
             Exercise
-            <i class="fas fa-plus-circle add-meals"></i>
+            <i
+              onClick={() => handleCreateExercise()}
+              class="fas fa-plus-circle add-meals"
+            ></i>
           </h2>
           <h2 className="diary-container-label"> Calories</h2>
         </div>
@@ -168,8 +184,11 @@ const Diary = () => {
         <div>Total Calories:</div>
         <div>{totalCal}</div>
       </div>
-      <button onClick={() => handleCreate()}>Test</button>
-      <FoodModal show={modalShow} onHide={() => setModalShow(false)} />
+      <FoodModal show={foodmodalShow} onHide={() => setfoodModalShow(false)} />
+      <ExerciseModal
+        show={exerciseModalShow}
+        onHide={() => setexerciseModalShow(false)}
+      />
     </div>
   );
 };

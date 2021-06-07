@@ -2,14 +2,13 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFoods } from "../../store/food";
 
-function FoodModal(props) {
-  const [food, setFood] = useState("");
+function ExerciseModal(props) {
+  const [exercise, setExercise] = useState("");
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await dispatch(fetchFoods());
+    //Fetch Exercises
   });
 
   return (
@@ -21,7 +20,7 @@ function FoodModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add a Meal Entry
+          Add an Exercise Entry
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -40,4 +39,4 @@ function FoodModal(props) {
   );
 }
 
-export default FoodModal;
+export default ExerciseModal;

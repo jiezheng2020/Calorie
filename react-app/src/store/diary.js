@@ -1,5 +1,3 @@
-import { bindActionCreators } from "redux";
-
 const GET_DIARIES = "diary/GET_DIARIES";
 const CREATE_DIARY = "diary/CREATE_DIARY";
 
@@ -42,6 +40,7 @@ export const createDiaries = (currDate) => async (dispatch) => {
 
   if (res.ok) {
     const diary = await res.json();
+    console.log(diary);
     dispatch(createDiary(diary));
     return diary;
   }
