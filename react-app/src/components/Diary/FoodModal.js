@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFoods } from "../../store/food";
 
 function FoodModal(props) {
-  const [food, setFood] = useState("");
   const dispatch = useDispatch();
+  const foods = useSelector((state) => state.foods);
 
   useEffect(async () => {
     await dispatch(fetchFoods());
-  });
+  }, [dispatch]);
 
   return (
     <Modal
