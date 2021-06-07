@@ -14,6 +14,7 @@ function FoodModal(props) {
   const [customFood, setcustomFood] = useState(null);
   const [defaultFood, setdefaultFood] = useState(null);
   const foods = useSelector((state) => state.foods);
+  console.log(defaultFood);
 
   useEffect(async () => {
     await dispatch(fetchFoods());
@@ -48,7 +49,12 @@ function FoodModal(props) {
           <div className="add-meal-container">
             <div className="add-meal-left">
               <label>Create your custom food</label>
-              <input type="text" />
+              <input
+                onChange={(e) => {
+                  setcustomFood(e.target.value);
+                }}
+                type="text"
+              />
             </div>
             <h3> OR </h3>
             <div className="add-meal-right">
@@ -60,7 +66,12 @@ function FoodModal(props) {
               <div className="search-results">
                 {searchResults.length > 0 &&
                   searchResults.map((result) => (
-                    <div className="result-row">{result.name} </div>
+                    <div
+                      onClick={() => setdefaultFood(result.id)}
+                      className="result-row"
+                    >
+                      {result.name}
+                    </div>
                   ))}
               </div>
             </div>
@@ -83,8 +94,10 @@ function FoodModal(props) {
         </>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Add Entry</Button>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button className="modal-btn">Add Entry</Button>
+        <Button className="modal-btn" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

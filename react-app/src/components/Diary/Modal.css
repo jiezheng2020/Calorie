@@ -30,3 +30,8 @@
   width: 600px;
   margin: auto;
 }
+
+.modal-btn {
+  background-color: #325288;
+  font-weight: bold;
+}
