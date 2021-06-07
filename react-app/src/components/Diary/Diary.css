@@ -58,6 +58,11 @@
   margin-left: 10px;
 }
 
+.add-meals:hover {
+  cursor: pointer;
+  color: rgb(0, 148, 0);
+}
+
 .diary-meal-subcontainer {
   display: flex;
   justify-content: space-between;

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchDiaries, createDiaries } from "../../store/diary";
+import FoodModal from "./FoodModal";
 
 import "./Diary.css";
 
 const Diary = () => {
   const user = useSelector((state) => state.session.user);
   const diaries = useSelector((state) => state.diaries);
+  const [modalShow, setModalShow] = useState(false);
   const [currDiary, setCurrDiary] = useState([]);
   const [currDate, setcurrDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -45,6 +47,8 @@ const Diary = () => {
     }
   };
 
+  const addMeal = async () => {};
+
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"
   );
@@ -70,7 +74,10 @@ const Diary = () => {
         <div className="diary-food-header">
           <h2 className="diary-container-label">
             Meals
-            <i class="fas fa-plus-circle add-meals"></i>
+            <i
+              onClick={() => setModalShow(true)}
+              class="fas fa-plus-circle add-meals"
+            ></i>
           </h2>
           <h2 className="diary-container-label"> Calories</h2>
         </div>
@@ -162,6 +169,7 @@ const Diary = () => {
         <div>{totalCal}</div>
       </div>
       <button onClick={() => handleCreate()}>Test</button>
+      <FoodModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
