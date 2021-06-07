@@ -68,7 +68,10 @@ const Diary = () => {
       </div>
       <div className="diary-food-container">
         <div className="diary-food-header">
-          <h2 className="diary-container-label">Meals</h2>
+          <h2 className="diary-container-label">
+            Meals
+            <i class="fas fa-plus-circle add-meals"></i>
+          </h2>
           <h2 className="diary-container-label"> Calories</h2>
         </div>
         <div className="diary-meal-containers">
@@ -80,7 +83,15 @@ const Diary = () => {
                 serving of {food.food.serving}
               </div>
 
-              <div>{food.totalCalories}</div>
+              <div className="diary-meal-calories">
+                <div className="diary-meal-calories-text">
+                  {food.totalCalories}
+                </div>
+                <div className="calories-buttons">
+                  <i class="fas fa-edit calories-edit"></i>
+                  <i class="fas fa-minus-circle calories-remove"></i>
+                </div>
+              </div>
             </div>
           ))}
           {(!currDiary || breakfastFood?.length === 0) && (
@@ -96,7 +107,15 @@ const Diary = () => {
                 serving of {food.food.serving}
               </div>
 
-              <div>{food.totalCalories}</div>
+              <div className="diary-meal-calories">
+                <div className="diary-meal-calories-text">
+                  {food.totalCalories}
+                </div>
+                <div className="calories-buttons">
+                  <i class="fas fa-edit calories-edit"></i>
+                  <i class="fas fa-minus-circle calories-remove"></i>
+                </div>
+              </div>
             </div>
           ))}
           {(!currDiary || lunchFood?.length === 0) && (
@@ -112,7 +131,15 @@ const Diary = () => {
                 serving of {food.food.serving}
               </div>
 
-              <div>{food.totalCalories}</div>
+              <div className="diary-meal-calories">
+                <div className="diary-meal-calories-text">
+                  {food.totalCalories}
+                </div>
+                <div className="calories-buttons">
+                  <i class="fas fa-edit calories-edit"></i>
+                  <i class="fas fa-minus-circle calories-remove"></i>
+                </div>
+              </div>
             </div>
           ))}
           {(!currDiary || dinnerFood?.length === 0) && (
@@ -122,7 +149,10 @@ const Diary = () => {
       </div>
       <div className="diary-food-container">
         <div className="diary-food-header">
-          <h2 className="diary-container-label">Exercise</h2>
+          <h2 className="diary-container-label">
+            Exercise
+            <i class="fas fa-plus-circle add-meals"></i>
+          </h2>
           <h2 className="diary-container-label"> Calories</h2>
         </div>
         <div className="diary-exercise-containers"></div>

@@ -53,6 +53,11 @@
   font-size: 27px;
 }
 
+.add-meals {
+  color: rgb(0, 179, 0);
+  margin-left: 10px;
+}
+
 .diary-meal-subcontainer {
   display: flex;
   justify-content: space-between;
@@ -66,4 +71,38 @@
 
 .total-calories-container > * {
   font-weight: bold;
+}
+
+.diary-meal-calories {
+  display: flex;
+  flex-wrap: row nowrap;
+  position: relative;
+}
+.diary-meal-calories-text {
+  min-width: 30px;
+  text-align: right;
+}
+.calories-buttons {
+  display: flex;
+  position: absolute;
+  top: 3px;
+  left: 50px;
+}
+
+.calories-edit {
+  color: #325288;
+}
+
+.calories-remove {
+  color: rgb(196, 0, 0);
+}
+
+.calories-remove:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.calories-edit:hover {
+  color: #436fbb;
+  cursor: pointer;
 }
