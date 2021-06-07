@@ -1,12 +1,11 @@
 from app.models import db,Diary
 from datetime import datetime, timedelta
-from random import randint
 
 
 def seed_diaries():
     diaries = []
 
-    for i in range(5):
+    for i in range(14):
         diary = Diary(
             user_id=1,
             date= datetime.utcnow() + timedelta(days=i)
