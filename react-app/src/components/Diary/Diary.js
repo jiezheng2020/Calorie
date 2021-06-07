@@ -12,6 +12,8 @@ const Diary = () => {
   const [currDate, setcurrDate] = useState(
     new Date().toISOString().split("T")[0]
   );
+  const [totalCal, setTotalCal] = useState(0);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,10 +22,32 @@ const Diary = () => {
 
   useEffect(() => {
     if (diaries.length) {
-      setCurrDiary(diaries.filter((diary) => diary.date.includes(currDate)));
+      setCurrDiary(diaries.filter((diary) => diary.date.includes(currDate))[0]);
     }
   }, [diaries, currDate]);
+  const breakfastFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "breakfast"
+  );
+  const lunchFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "lunch"
+  );
+  const dinnerFood = currDiary?.diaryFoods?.filter(
+    (food) => food.mealType === "dinner"
+  );
 
+  useEffect(() => {
+    if (currDiary) {
+      let sum = 0;
+      const foodsArr = currDiary?.diaryFoods?.forEach(
+        (food) => (sum += food.totalCalories)
+      );
+      setTotalCal(sum);
+    } else {
+      setTotalCal(0);
+    }
+  }, [currDiary]);
+
+  console.log(currDiary);
   return (
     <div className="diary-container">
       <div className="diary-header">
@@ -42,30 +66,51 @@ const Diary = () => {
         </div>
         <div className="diary-meal-containers">
           <div className="diary-meal-label"> Breakfast</div>
-          <div className="diary-meal-subcontainer">
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-          </div>
+          {breakfastFood?.map((food, i) => (
+            <div key={i} className="diary-meal-subcontainer">
+              <div>
+                {food.food.name} : item is {food.food.calories} calories per
+                serving of {food.food.serving}
+              </div>
+
+              <div>{food.totalCalories}</div>
+            </div>
+          ))}
+          {(!currDiary || breakfastFood?.length === 0) && (
+            <div>No meals have been added</div>
+          )}
         </div>
         <div className="diary-meal-containers">
           <div className="diary-meal-label"> Lunch</div>
-          <div className="diary-meal-subcontainer">
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-          </div>
+          {lunchFood?.map((food, i) => (
+            <div key={i} className="diary-meal-subcontainer">
+              <div>
+                {food.food.name} : item is {food.food.calories} calories per
+                serving of {food.food.serving}
+              </div>
+
+              <div>{food.totalCalories}</div>
+            </div>
+          ))}
+          {(!currDiary || lunchFood?.length === 0) && (
+            <div>No meals have been added</div>
+          )}
         </div>
         <div className="diary-meal-containers">
           <div className="diary-meal-label"> Dinner</div>
-          <div className="diary-meal-subcontainer">
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-            <div>Food1</div>
-          </div>
+          {dinnerFood?.map((food, i) => (
+            <div key={i} className="diary-meal-subcontainer">
+              <div>
+                {food.food.name} : item is {food.food.calories} calories per
+                serving of {food.food.serving}
+              </div>
+
+              <div>{food.totalCalories}</div>
+            </div>
+          ))}
+          {(!currDiary || dinnerFood?.length === 0) && (
+            <div>No meals have been added</div>
+          )}
         </div>
       </div>
       <div className="diary-food-container">
@@ -74,6 +119,10 @@ const Diary = () => {
           <h2 className="diary-container-label"> Calories</h2>
         </div>
         <div className="diary-exercise-containers"></div>
+      </div>
+      <div className="diary-food-container total-calories-container">
+        <div>Total Calories:</div>
+        <div>{totalCal}</div>
       </div>
     </div>
   );

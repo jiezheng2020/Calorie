@@ -52,3 +52,18 @@
   font-weight: bolder;
   font-size: 27px;
 }
+
+.diary-meal-subcontainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.total-calories-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-calories-container > * {
+  font-weight: bold;
+}
