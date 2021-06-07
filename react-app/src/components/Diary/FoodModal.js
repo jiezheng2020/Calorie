@@ -10,11 +10,10 @@ function FoodModal(props) {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setsearchResults] = useState([]);
   const [mealType, setmealType] = useState("");
-  const [serving, setServing] = useState(0);
-  const [customFood, setcustomFood] = useState(null);
-  const [defaultFood, setdefaultFood] = useState(null);
+  const [serving, setServing] = useState("");
+  const [customFood, setcustomFood] = useState("");
+  const [defaultFood, setdefaultFood] = useState("");
   const foods = useSelector((state) => state.foods);
-  console.log(defaultFood);
 
   useEffect(async () => {
     await dispatch(fetchFoods());
@@ -31,6 +30,19 @@ function FoodModal(props) {
       setsearchResults("");
     }
   }, [searchInput]);
+
+  const handleCreate = () => {
+    props.onHide();
+    console.log(defaultFood);
+    console.log(customFood);
+  };
+
+  const handledefaultFood = (result) => {
+    setdefaultFood(result);
+    setSearchInput("");
+    setsearchResults("");
+  };
+  console.log(defaultFood);
 
   return (
     <Modal
@@ -58,16 +70,26 @@ function FoodModal(props) {
             </div>
             <h3> OR </h3>
             <div className="add-meal-right">
-              <label>Search for your food</label>
+              <div>
+                <label>Search for your food</label>
+                <i onClick={() => setdefaultFood("")} class="fas fa-eraser"></i>
+              </div>
               <input
                 onChange={(e) => setSearchInput(e.target.value)}
                 type="text"
+                value={searchInput}
               ></input>
+              {defaultFood && (
+                <div className="food-confirmed">
+                  <div> selected {defaultFood.name}</div>
+                  <div> size: {defaultFood.serving}</div>
+                </div>
+              )}
               <div className="search-results">
                 {searchResults.length > 0 &&
                   searchResults.map((result) => (
                     <div
-                      onClick={() => setdefaultFood(result.id)}
+                      onClick={() => handledefaultFood(result)}
                       className="result-row"
                     >
                       {result.name}
@@ -88,13 +110,29 @@ function FoodModal(props) {
             </div>
             <label>Input Serving Amount</label>
             <div>
-              <input type="text" onChange={(e) => setServing(e.target.value)} />
+              <input
+                type="number"
+                min="1"
+                max="30"
+                onChange={(e) => setServing(e.target.value)}
+              />
             </div>
           </div>
         </>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="modal-btn">Add Entry</Button>
+        <Button
+          disabled={
+            (defaultFood && customFood) ||
+            (!defaultFood && !customFood) ||
+            !mealType ||
+            !serving
+          }
+          className="modal-btn"
+          onClick={() => handleCreate()}
+        >
+          Add Entry
+        </Button>
         <Button className="modal-btn" onClick={props.onHide}>
           Close
         </Button>

@@ -35,3 +35,18 @@
   background-color: #325288;
   font-weight: bold;
 }
+.fa-eraser {
+  margin-left: 5px;
+  color: #325288;
+}
+
+.fa-eraser:hover {
+  cursor: pointer;
+}
+
+.food-confirmed {
+  position: absolute;
+  top: 80px;
+  color: rgb(0, 150, 62);
+  font-weight: bold;
+}
