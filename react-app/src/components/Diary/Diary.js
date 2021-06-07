@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchDiaries } from "../../store/diary";
+import { fetchDiaries, createDiaries } from "../../store/diary";
 
 import "./Diary.css";
 
@@ -47,7 +47,9 @@ const Diary = () => {
     }
   }, [currDiary]);
 
-  console.log(currDiary);
+  const handleCreate = async () => {
+    await dispatch(createDiaries(currDate));
+  };
   return (
     <div className="diary-container">
       <div className="diary-header">
@@ -124,6 +126,7 @@ const Diary = () => {
         <div>Total Calories:</div>
         <div>{totalCal}</div>
       </div>
+      <button onClick={() => handleCreate()}>Test</button>
     </div>
   );
 };
