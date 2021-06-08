@@ -42,12 +42,12 @@ def create_entry():
     db.session.commit()
     return newFood.to_dict()
 
-@food_routes.route('/entry', methods =['PUT'])
+@food_routes.route('/entry/<int:id>', methods =['PUT'])
 @login_required
-def edit_entry():
+def edit_entry(id):
     data = request.json
 
-    newFood = FoodEntry.query.get(data["foodId"])
+    newFood = FoodEntry.query.get(id)
     newFood.totalCalories = data["totalCalories"]
 
     db.session.add(newFood)

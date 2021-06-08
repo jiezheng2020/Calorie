@@ -32,10 +32,10 @@ const editFoodEntries = (food) => {
   };
 };
 
-const deleteFoodEntries = (food) => {
+const deleteFoodEntries = (foodId) => {
   return {
     type: DELETE_FOODENTRY,
-    food,
+    foodId,
   };
 };
 
@@ -89,12 +89,12 @@ export const createFoodEntry =
 export const editFoodEntry =
   ({ foodId, totalCalories }) =>
   async (dispatch) => {
-    const res = await fetch("/api/food/entry", {
+    const res = await fetch(`/api/food/entry/${foodId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ foodId, totalCalories }),
+      body: JSON.stringify({ totalCalories }),
     });
 
     if (res.ok) {
@@ -151,11 +151,10 @@ export default function reducer(state = initialState, action) {
       let index = 0;
       newState = [...state];
       newState[0].diaryFoods.forEach((entry, i) => {
-        if (entry.id == action.food.id) {
+        if (entry.id == action.foodId) {
           index = i;
         }
       });
-      console.log(index);
 
       newState[0].diaryFoods.splice(index, 1);
       return newState;
