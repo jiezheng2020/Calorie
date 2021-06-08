@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchDiaries, createDiaries, editFoodEntry } from "../../store/diary";
+import {
+  fetchDiaries,
+  createDiaries,
+  editFoodEntry,
+  deleteFoodEntry,
+} from "../../store/diary";
 import FoodModal from "./FoodModal";
 import ExerciseModal from "./ExerciseModal";
 
@@ -74,6 +79,14 @@ const Diary = () => {
     setactiveEdit("");
   };
 
+  const handleDeleteFood = async (food) => {
+    await dispatch(
+      deleteFoodEntry({
+        foodId: food.id,
+      })
+    );
+  };
+
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"
   );
@@ -141,7 +154,10 @@ const Diary = () => {
                     ></i>
                   </div>
 
-                  <i className="fas fa-minus-circle calories-remove"></i>
+                  <i
+                    onClick={() => handleDeleteFood(food)}
+                    className="fas fa-minus-circle calories-remove"
+                  ></i>
                 </div>
               </div>
             </div>

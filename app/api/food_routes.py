@@ -53,3 +53,12 @@ def edit_entry():
     db.session.add(newFood)
     db.session.commit()
     return newFood.to_dict()
+
+@food_routes.route('/entry/<int:id>', methods =['DELETE'])
+@login_required
+def delete_entry(id):
+    entry = FoodEntry.query.get(id)
+
+    db.session.delete(entry)
+    db.session.commit()
+    return {'message': 'deleted!'}

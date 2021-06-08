@@ -2,6 +2,7 @@ const GET_DIARIES = "diary/GET_DIARIES";
 const CREATE_DIARY = "diary/CREATE_DIARY";
 const CREATE_FOODENTRY = "food/CREATE_FOODENTRY";
 const EDIT_FOODENTRY = "food/EDIT_FOODENTRY";
+const DELETE_FOODENTRY = "food/DELETE_FOODENTRY";
 
 const getDiaries = (diary) => {
   return {
@@ -27,6 +28,13 @@ const createFoodEntries = (food) => {
 const editFoodEntries = (food) => {
   return {
     type: EDIT_FOODENTRY,
+    food,
+  };
+};
+
+const deleteFoodEntries = (food) => {
+  return {
+    type: DELETE_FOODENTRY,
     food,
   };
 };
@@ -91,8 +99,19 @@ export const editFoodEntry =
 
     if (res.ok) {
       const food = await res.json();
-      console.log(food);
       dispatch(editFoodEntries(food));
+    }
+  };
+
+export const deleteFoodEntry =
+  ({ foodId }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/food/entry/${foodId}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      dispatch(deleteFoodEntries(foodId));
     }
   };
 
@@ -125,6 +144,20 @@ export default function reducer(state = initialState, action) {
       });
 
       newState[0].diaryFoods.splice(index, 1, action.food);
+      return newState;
+    }
+
+    case DELETE_FOODENTRY: {
+      let index = 0;
+      newState = [...state];
+      newState[0].diaryFoods.forEach((entry, i) => {
+        if (entry.id == action.food.id) {
+          index = i;
+        }
+      });
+      console.log(index);
+
+      newState[0].diaryFoods.splice(index, 1);
       return newState;
     }
 
