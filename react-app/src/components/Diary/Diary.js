@@ -89,7 +89,7 @@ const Diary = () => {
             Meals
             <i
               onClick={() => handleCreateFood()}
-              class="fas fa-plus-circle add-meals"
+              className="fas fa-plus-circle add-meals"
             ></i>
           </h2>
           <h2 className="diary-container-label"> Calories</h2>
@@ -108,8 +108,8 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i class="fas fa-edit calories-edit"></i>
-                  <i class="fas fa-minus-circle calories-remove"></i>
+                  <i className="fas fa-edit calories-edit"></i>
+                  <i className="fas fa-minus-circle calories-remove"></i>
                 </div>
               </div>
             </div>
@@ -132,8 +132,8 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i class="fas fa-edit calories-edit"></i>
-                  <i class="fas fa-minus-circle calories-remove"></i>
+                  <i className="fas fa-edit calories-edit"></i>
+                  <i className="fas fa-minus-circle calories-remove"></i>
                 </div>
               </div>
             </div>
@@ -156,8 +156,8 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i class="fas fa-edit calories-edit"></i>
-                  <i class="fas fa-minus-circle calories-remove"></i>
+                  <i className="fas fa-edit calories-edit"></i>
+                  <i className="fas fa-minus-circle calories-remove"></i>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@ const Diary = () => {
             Exercise
             <i
               onClick={() => handleCreateExercise()}
-              class="fas fa-plus-circle add-meals"
+              className="fas fa-plus-circle add-meals"
             ></i>
           </h2>
           <h2 className="diary-container-label"> Calories</h2>

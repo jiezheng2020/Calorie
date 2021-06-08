@@ -10,12 +10,27 @@ def get_foods():
     foods = Food.query.all()
     return jsonify([food.to_dict() for food in foods])
 
+@food_routes.route('/', methods=['POST'])
+@login_required
+def create_custom():
+    data = request.json
+    newFood = Food(
+        name=data["name"],
+        calories=data["calories"],
+        foodType= "custom",
+        serving=data["serving"]
+    )
+
+    db.session.add(newFood)
+    db.session.commit()
+
+    return newFood.to_dict()
+
 @food_routes.route('/entry', methods =['POST'])
 @login_required
 def create_entry():
     data = request.json
-    print(data)
-    print('======================')
+
     newFood = FoodEntry(
         food_id = data["foodId"],
         diary_id = data["diaryId"],

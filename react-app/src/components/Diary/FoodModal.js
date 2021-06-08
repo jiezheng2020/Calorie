@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFoods } from "../../store/food";
+import { fetchFoods, createFood } from "../../store/food";
 import { createFoodEntry } from "../../store/diary";
 import "./Modal.css";
 
@@ -14,6 +14,7 @@ function FoodModal(props) {
   const [mealType, setmealType] = useState("");
   const [serving, setServing] = useState("");
   const [customFood, setcustomFood] = useState("");
+  const [customCalories, setcustomCalories] = useState(0);
   const [defaultFood, setdefaultFood] = useState("");
   const foods = useSelector((state) => state.foods);
 
@@ -44,12 +45,29 @@ function FoodModal(props) {
       };
       await dispatch(createFoodEntry(newFood));
     }
+    if (customFood !== "") {
+      const custFood = {
+        name: customFood,
+        calories: customCalories,
+        serving: `1 ${customFood}`,
+      };
+      const foodId = await dispatch(createFood(custFood));
+
+      const newFood = {
+        foodId: foodId,
+        diaryId: DiaryId,
+        mealType: mealType,
+        totalCalories: serving * customCalories,
+      };
+      await dispatch(createFoodEntry(newFood));
+    }
   };
 
   const handledefaultFood = (result) => {
     setdefaultFood(result);
     setSearchInput("");
     setsearchResults("");
+    setcustomFood("");
   };
   return (
     <Modal
@@ -80,7 +98,10 @@ function FoodModal(props) {
             <div className="add-meal-right">
               <div>
                 <label>Search for your food</label>
-                <i onClick={() => setdefaultFood("")} class="fas fa-eraser"></i>
+                <i
+                  onClick={() => setdefaultFood("")}
+                  className="fas fa-eraser"
+                ></i>
               </div>
               <input
                 onChange={(e) => setSearchInput(e.target.value)}
@@ -100,6 +121,7 @@ function FoodModal(props) {
                     <div
                       onClick={() => handledefaultFood(result)}
                       className="result-row"
+                      key={result.id}
                     >
                       {result.name}
                     </div>
@@ -108,6 +130,17 @@ function FoodModal(props) {
             </div>
           </div>
           <div className="add-meal-bottom">
+            <label>Custom food calories per serving</label>
+            <div>
+              <input
+                onChange={(e) => {
+                  setcustomCalories(e.target.value);
+                }}
+                type="number"
+                min="0"
+                disabled={defaultFood}
+              />
+            </div>
             <label>Select Meal Type</label>
             <div>
               <select onChange={(e) => setmealType(e.target.value)}>
