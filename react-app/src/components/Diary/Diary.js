@@ -180,8 +180,31 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i className="fas fa-edit calories-edit"></i>
-                  <i className="fas fa-minus-circle calories-remove"></i>
+                  <i
+                    onClick={() => setactiveEdit(food.id)}
+                    className="fas fa-edit calories-edit"
+                  />
+                  <div hidden={activeEdit !== food.id} className="edit-box">
+                    <input
+                      onChange={(e) => seteditCalories(e.target.value)}
+                      type="number"
+                      min="0"
+                      placeholder="Enter calories amount"
+                    ></input>
+                    <i
+                      onClick={() => handleEditFood(food)}
+                      className="fas fa-check"
+                    ></i>
+                    <i
+                      className="fas fa-times"
+                      onClick={() => setactiveEdit("")}
+                    ></i>
+                  </div>
+
+                  <i
+                    onClick={() => handleDeleteFood(food)}
+                    className="fas fa-minus-circle calories-remove"
+                  ></i>
                 </div>
               </div>
             </div>
@@ -204,8 +227,31 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i className="fas fa-edit calories-edit"></i>
-                  <i className="fas fa-minus-circle calories-remove"></i>
+                  <i
+                    onClick={() => setactiveEdit(food.id)}
+                    className="fas fa-edit calories-edit"
+                  />
+                  <div hidden={activeEdit !== food.id} className="edit-box">
+                    <input
+                      onChange={(e) => seteditCalories(e.target.value)}
+                      type="number"
+                      min="0"
+                      placeholder="Enter calories amount"
+                    ></input>
+                    <i
+                      onClick={() => handleEditFood(food)}
+                      className="fas fa-check"
+                    ></i>
+                    <i
+                      className="fas fa-times"
+                      onClick={() => setactiveEdit("")}
+                    ></i>
+                  </div>
+
+                  <i
+                    onClick={() => handleDeleteFood(food)}
+                    className="fas fa-minus-circle calories-remove"
+                  ></i>
                 </div>
               </div>
             </div>
