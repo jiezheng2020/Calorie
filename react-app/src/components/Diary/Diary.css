@@ -111,3 +111,33 @@
   color: #436fbb;
   cursor: pointer;
 }
+
+.edit-box {
+  background-color: white;
+  position: absolute;
+  border: solid #bac0cc thin;
+  display: flex;
+  align-items: center;
+}
+.edit-box > input {
+  border: none;
+}
+
+.edit-box > input:focus {
+  outline: none;
+}
+
+.fa-check {
+  margin-right: 5px;
+  color: green;
+}
+
+.fa-times {
+  margin-right: 5px;
+  color: red;
+}
+
+.fa-check:hover,
+.fa-times:hover {
+  cursor: pointer;
+}

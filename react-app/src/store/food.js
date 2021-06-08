@@ -1,4 +1,5 @@
 const GET_FOODS = "food/GET_FOODS";
+const EDIT_FOOD = "food/EDIT_FOOD";
 
 const getFoods = (foods) => {
   return {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchDiaries, createDiaries } from "../../store/diary";
+import { fetchDiaries, createDiaries, editFoodEntry } from "../../store/diary";
 import FoodModal from "./FoodModal";
 import ExerciseModal from "./ExerciseModal";
 
@@ -11,6 +11,8 @@ const Diary = () => {
   const user = useSelector((state) => state.session.user);
   const diaries = useSelector((state) => state.diaries);
   const [foodmodalShow, setfoodModalShow] = useState(false);
+  const [activeEdit, setactiveEdit] = useState("");
+  const [editCalories, seteditCalories] = useState(0);
   const [exerciseModalShow, setexerciseModalShow] = useState(false);
   const [currDiary, setCurrDiary] = useState([]);
   const [currDate, setcurrDate] = useState(
@@ -62,6 +64,16 @@ const Diary = () => {
     setexerciseModalShow(true);
   };
 
+  const handleEditFood = async (food) => {
+    await dispatch(
+      editFoodEntry({
+        foodId: food.id,
+        totalCalories: editCalories,
+      })
+    );
+    setactiveEdit("");
+  };
+
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"
   );
@@ -108,7 +120,27 @@ const Diary = () => {
                   {food.totalCalories}
                 </div>
                 <div className="calories-buttons">
-                  <i className="fas fa-edit calories-edit"></i>
+                  <i
+                    onClick={() => setactiveEdit(food.id)}
+                    className="fas fa-edit calories-edit"
+                  />
+                  <div hidden={activeEdit !== food.id} className="edit-box">
+                    <input
+                      onChange={(e) => seteditCalories(e.target.value)}
+                      type="number"
+                      min="0"
+                      placeholder="Enter calories amount"
+                    ></input>
+                    <i
+                      onClick={() => handleEditFood(food)}
+                      className="fas fa-check"
+                    ></i>
+                    <i
+                      className="fas fa-times"
+                      onClick={() => setactiveEdit("")}
+                    ></i>
+                  </div>
+
                   <i className="fas fa-minus-circle calories-remove"></i>
                 </div>
               </div>

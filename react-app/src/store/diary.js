@@ -1,6 +1,7 @@
 const GET_DIARIES = "diary/GET_DIARIES";
 const CREATE_DIARY = "diary/CREATE_DIARY";
 const CREATE_FOODENTRY = "food/CREATE_FOODENTRY";
+const EDIT_FOODENTRY = "food/EDIT_FOODENTRY";
 
 const getDiaries = (diary) => {
   return {
@@ -19,6 +20,13 @@ const createDiary = (diary) => {
 const createFoodEntries = (food) => {
   return {
     type: CREATE_FOODENTRY,
+    food,
+  };
+};
+
+const editFoodEntries = (food) => {
+  return {
+    type: EDIT_FOODENTRY,
     food,
   };
 };
@@ -70,6 +78,24 @@ export const createFoodEntry =
     }
   };
 
+export const editFoodEntry =
+  ({ foodId, totalCalories }) =>
+  async (dispatch) => {
+    const res = await fetch("/api/food/entry", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ foodId, totalCalories }),
+    });
+
+    if (res.ok) {
+      const food = await res.json();
+      console.log(food);
+      dispatch(editFoodEntries(food));
+    }
+  };
+
 const initialState = [];
 export default function reducer(state = initialState, action) {
   let newState = [];
@@ -89,6 +115,19 @@ export default function reducer(state = initialState, action) {
       newState[0].diaryFoods.push(action.food);
       return newState;
     }
+    case EDIT_FOODENTRY: {
+      let index = 0;
+      newState = [...state];
+      newState[0].diaryFoods.forEach((entry, i) => {
+        if (entry.id == action.food.id) {
+          index = i;
+        }
+      });
+
+      newState[0].diaryFoods.splice(index, 1, action.food);
+      return newState;
+    }
+
     default:
       return state;
   }
