@@ -61,6 +61,8 @@ function FoodModal(props) {
       };
       await dispatch(createFoodEntry(newFood));
     }
+    setcustomFood("");
+    setdefaultFood("");
   };
 
   const handledefaultFood = (result) => {
