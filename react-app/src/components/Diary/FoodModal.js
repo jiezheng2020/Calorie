@@ -73,6 +73,7 @@ function FoodModal(props) {
                   setcustomFood(e.target.value);
                 }}
                 type="text"
+                disabled={defaultFood}
               />
             </div>
             <h3> OR </h3>
@@ -85,6 +86,7 @@ function FoodModal(props) {
                 onChange={(e) => setSearchInput(e.target.value)}
                 type="text"
                 value={searchInput}
+                disabled={customFood.length > 0}
               ></input>
               {defaultFood && (
                 <div className="food-confirmed">
