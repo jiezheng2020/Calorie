@@ -14,6 +14,6 @@ class Exercise(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "cpm": self.cpm,
+            "cpm": self.cpm/100,
             "exerciseType": self.exerciseType
         }

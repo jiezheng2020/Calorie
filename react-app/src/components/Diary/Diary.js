@@ -17,7 +17,9 @@ const Diary = () => {
   const diaries = useSelector((state) => state.diaries);
   const [foodmodalShow, setfoodModalShow] = useState(false);
   const [activeEdit, setactiveEdit] = useState("");
+  const [activeExercise, setactiveExercise] = useState("");
   const [editCalories, seteditCalories] = useState(0);
+  const [editExerciseCalories, seteditExerciseCalories] = useState("");
   const [exerciseModalShow, setexerciseModalShow] = useState(false);
   const [currDiary, setCurrDiary] = useState([]);
   const [currDate, setcurrDate] = useState(
@@ -37,6 +39,11 @@ const Diary = () => {
       const foodsArr = currDiary?.diaryFoods?.forEach(
         (food) => (sum += food.totalCalories)
       );
+
+      const exerArr = currDiary?.diaryExercise?.forEach(
+        (exercise) => (sum -= exercise.totalCalories)
+      );
+
       setTotalCal(sum);
     } else {
       setTotalCal(0);
@@ -77,6 +84,13 @@ const Diary = () => {
       })
     );
     setactiveEdit("");
+    seteditCalories(0);
+  };
+
+  const handleEditExercise = async (exerise) => {
+    // logic
+
+    setactiveExercise("");
   };
 
   const handleDeleteFood = async (food) => {
@@ -87,6 +101,9 @@ const Diary = () => {
     );
   };
 
+  const handleDeleteExercise = async (exercise) => {
+    // logic
+  };
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"
   );
@@ -96,6 +113,8 @@ const Diary = () => {
   const dinnerFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "dinner"
   );
+
+  const exercises = currDiary?.diaryExercise;
 
   return (
     <div className="diary-container">
@@ -272,7 +291,52 @@ const Diary = () => {
           </h2>
           <h2 className="diary-container-label"> Calories</h2>
         </div>
-        <div className="diary-exercise-containers"></div>
+        <div className="diary-exercise-containers">
+          {exercises?.map((exercise, i) => (
+            <div key={i} className="diary-meal-subcontainer">
+              <div>
+                {exercise.exercise.name} : exercise burns{" "}
+                {exercise.exercise.cpm} calories per pound per minute
+              </div>
+
+              <div className="diary-meal-calories">
+                <div className="diary-meal-calories-text">
+                  {exercise.totalCalories}
+                </div>
+                <div className="calories-buttons">
+                  <i
+                    onClick={() => setactiveExercise(exercise.id)}
+                    className="fas fa-edit calories-edit"
+                  />
+                  <div
+                    hidden={activeExercise !== exercise.id}
+                    className="edit-box"
+                  >
+                    <input
+                      onChange={(e) => seteditExerciseCalories(e.target.value)}
+                      type="number"
+                      min="0"
+                      placeholder="Enter calories amount"
+                    ></input>
+                    <i
+                      onClick={() => handleEditExercise(exercise)}
+                      className="fas fa-check"
+                    ></i>
+                    <i
+                      className="fas fa-times"
+                      onClick={() => setactiveExercise("")}
+                    ></i>
+                  </div>
+
+                  <i
+                    onClick={() => handleDeleteExercise(exercise)}
+                    className="fas fa-minus-circle calories-remove"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="diary-food-container total-calories-container">
         <div>Total Calories:</div>

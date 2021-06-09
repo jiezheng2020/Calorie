@@ -4,7 +4,7 @@ from .diaries import seed_diaries, undo_diaries
 from .foods import seed_foods,undo_foods
 from .foodEntries import seed_foodEntries, undo_foodEntries
 from .exercises import seed_exercises, undo_exercises
-
+from .exerciseEntries import seed_exerciseEntries, undo_exerciseEntries
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -17,6 +17,7 @@ def seed():
     seed_foods()
     seed_foodEntries()
     seed_exercises()
+    seed_exerciseEntries()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -27,4 +28,5 @@ def undo():
     undo_foods()
     undo_foodEntries()
     undo_exercises()
+    undo_exerciseEntries()
     # Add other undo functions here

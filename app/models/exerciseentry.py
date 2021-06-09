@@ -4,7 +4,7 @@ class ExerciseEntry(db.Model):
     __tablename__='exerciseEntries'
 
     id = db.Column(db.Integer, primary_key = True)
-    exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id'), nullable=False)
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id'), nullable=True)
     diary_id = db.Column(db.Integer, db.ForeignKey('diaries.id'), nullable=False)
     totalCalories = db.Column(db.Integer, nullable=False)
 
