@@ -51,6 +51,10 @@
   border-bottom: #bac0cc solid 1px;
 }
 
+.dinner-border {
+  border-bottom: none;
+}
+
 .diary-meal-label {
   font-weight: bold;
   font-size: 20px;

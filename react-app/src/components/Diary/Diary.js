@@ -256,7 +256,7 @@ const Diary = () => {
             <div>No meals have been added</div>
           )}
         </div>
-        <div className="diary-meal-containers">
+        <div className="diary-meal-containers dinner-border">
           <div className="diary-meal-label"> Dinner</div>
           {dinnerFood?.map((food, i) => (
             <div key={i} className="diary-meal-subcontainer">
