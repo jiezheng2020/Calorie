@@ -6,7 +6,6 @@ class ExerciseEntry(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id'), nullable=False)
     diary_id = db.Column(db.Integer, db.ForeignKey('diaries.id'), nullable=False)
-    exerciseType = db.Column(db.String(20), nullable=False)
     totalCalories = db.Column(db.Integer, nullable=False)
 
     exercise = db.relationship('Exercise', back_populates='exercise_entries')
@@ -17,6 +16,5 @@ class ExerciseEntry(db.Model):
             "id": self.id,
             "exercise": self.exercise.to_dict(),
             "diaryId": self.diary_id,
-            "exerciseType": self.exerciseType,
             "totalCalories": self.totalCalories
         }

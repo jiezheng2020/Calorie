@@ -38,5 +38,6 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      "dailyGoal": self.dailyGoal
+      "dailyGoal": self.dailyGoal,
+      "weight": self.weight
     }
