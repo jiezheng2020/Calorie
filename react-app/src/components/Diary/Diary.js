@@ -6,6 +6,8 @@ import {
   createDiaries,
   editFoodEntry,
   deleteFoodEntry,
+  editExerciseEntry,
+  deleteExerciseEntry,
 } from "../../store/diary";
 import FoodModal from "./FoodModal";
 import ExerciseModal from "./ExerciseModal";
@@ -87,10 +89,16 @@ const Diary = () => {
     seteditCalories(0);
   };
 
-  const handleEditExercise = async (exerise) => {
-    // logic
+  const handleEditExercise = async (exercise) => {
+    await dispatch(
+      editExerciseEntry({
+        exerciseId: exercise.id,
+        totalCalories: editExerciseCalories,
+      })
+    );
 
     setactiveExercise("");
+    seteditExerciseCalories(0);
   };
 
   const handleDeleteFood = async (food) => {
@@ -102,7 +110,11 @@ const Diary = () => {
   };
 
   const handleDeleteExercise = async (exercise) => {
-    // logic
+    await dispatch(
+      deleteExerciseEntry({
+        exerciseId: exercise.id,
+      })
+    );
   };
   const breakfastFood = currDiary?.diaryFoods?.filter(
     (food) => food.mealType === "breakfast"

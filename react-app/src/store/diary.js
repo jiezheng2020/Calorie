@@ -3,6 +3,8 @@ const CREATE_DIARY = "diary/CREATE_DIARY";
 const CREATE_FOODENTRY = "food/CREATE_FOODENTRY";
 const EDIT_FOODENTRY = "food/EDIT_FOODENTRY";
 const DELETE_FOODENTRY = "food/DELETE_FOODENTRY";
+const EDIT_EXERCISEENTRY = "exercise/EDIT_EXERCISEENTRY";
+const DELETE_EXERCISEENTRY = "exercise/DELETE_EXERCISEENTRY";
 
 const getDiaries = (diary) => {
   return {
@@ -36,6 +38,20 @@ const deleteFoodEntries = (foodId) => {
   return {
     type: DELETE_FOODENTRY,
     foodId,
+  };
+};
+
+const editExerciseEntries = (exercise) => {
+  return {
+    type: EDIT_EXERCISEENTRY,
+    exercise,
+  };
+};
+
+const deleteExerciseEntries = (exerciseId) => {
+  return {
+    type: DELETE_EXERCISEENTRY,
+    exerciseId,
   };
 };
 
@@ -115,6 +131,35 @@ export const deleteFoodEntry =
     }
   };
 
+export const editExerciseEntry =
+  ({ exerciseId, totalCalories }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/exercise/entry/${exerciseId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ totalCalories }),
+    });
+
+    if (res.ok) {
+      const exercise = await res.json();
+      dispatch(editExerciseEntries(exercise));
+    }
+  };
+
+export const deleteExerciseEntry =
+  ({ exerciseId }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/exercise/entry/${exerciseId}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      dispatch(deleteExerciseEntries(exerciseId));
+    }
+  };
+
 const initialState = [];
 export default function reducer(state = initialState, action) {
   let newState = [];
@@ -157,6 +202,31 @@ export default function reducer(state = initialState, action) {
       });
 
       newState[0].diaryFoods.splice(index, 1);
+      return newState;
+    }
+    case EDIT_EXERCISEENTRY: {
+      let index = 0;
+      newState = [...state];
+      newState[0].diaryExercise.forEach((entry, i) => {
+        if (entry.id == action.exercise.id) {
+          index = i;
+        }
+      });
+
+      newState[0].diaryExercise.splice(index, 1, action.exercise);
+      return newState;
+    }
+
+    case DELETE_EXERCISEENTRY: {
+      let index = 0;
+      newState = [...state];
+      newState[0].diaryExercise.forEach((entry, i) => {
+        if (entry.id == action.exerciseId) {
+          index = i;
+        }
+      });
+
+      newState[0].diaryExercise.splice(index, 1);
       return newState;
     }
 
