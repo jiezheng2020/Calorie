@@ -4,6 +4,13 @@ from app.models import Exercise, db , ExerciseEntry
 
 exercise_routes = Blueprint('exercises', __name__)
 
+@exercise_routes.route('/')
+@login_required
+def get_exercises():
+    exercises = Exercise.query.all()
+    return jsonify([exercise.to_dict() for exercise in exercises])
+
+
 @exercise_routes.route('/entry/<int:id>', methods =['PUT'])
 @login_required
 def edit_entry(id):
