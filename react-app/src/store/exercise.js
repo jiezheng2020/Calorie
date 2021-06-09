@@ -17,6 +17,23 @@ export const fetchExercises = () => async (dispatch) => {
   }
 };
 
+export const createExercise =
+  ({ name }) =>
+  async (dispatch) => {
+    const res = await fetch("/api/exercise/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name }),
+    });
+
+    if (res.ok) {
+      const exercise = await res.json();
+      return exercise.id;
+    }
+  };
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

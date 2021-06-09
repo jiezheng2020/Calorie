@@ -2,10 +2,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchExercises } from "../../store/exercise";
+import { fetchExercises, createExercise } from "../../store/exercise";
+import { createExerciseEntry } from "../../store/diary";
 
 function ExerciseModal(props) {
   const DiaryId = useSelector((state) => state.diaries[0]?.id);
+  const user = useSelector((state) => state.session.user);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setsearchResults] = useState([]);
   const [customExercise, setcustomExercise] = useState("");
@@ -37,10 +39,31 @@ function ExerciseModal(props) {
       const newExercise = {
         exerciseId: defaultExercise.id,
         diaryId: DiaryId,
-        // Need more logic
+        totalCalories: user.weight * defaultMinutes * defaultExercise.cpm,
       };
-      console.log(defaultExercise);
+
+      await dispatch(createExerciseEntry(newExercise));
     }
+
+    if (customExercise !== "") {
+      const custExercise = {
+        name: customExercise,
+      };
+
+      const exerciseId = await dispatch(createExercise(custExercise));
+
+      const newExercise = {
+        exerciseId: exerciseId,
+        diaryId: DiaryId,
+        totalCalories: customCalories,
+      };
+
+      await dispatch(createExerciseEntry(newExercise));
+    }
+
+    setcustomExercise("");
+    setdefaultExercise("");
+    setdefaultMinutes(0);
   };
 
   const handledefaultExercise = (result) => {

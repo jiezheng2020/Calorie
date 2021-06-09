@@ -32,6 +32,7 @@ const Diary = () => {
 
   useEffect(async () => {
     const res = await dispatch(fetchDiaries(currDate));
+
     await setCurrDiary(res[0]);
   }, [dispatch, currDate]);
 
@@ -307,8 +308,18 @@ const Diary = () => {
           {exercises?.map((exercise, i) => (
             <div key={i} className="diary-meal-subcontainer">
               <div>
-                {exercise.exercise.name} : exercise burns{" "}
-                {exercise.exercise.cpm} calories per pound per minute
+                {exercise.exercise.exerciseType === "default" && (
+                  <div>
+                    {exercise.exercise.name} : exercise burns{" "}
+                    {exercise.exercise.cpm} calories per pound per minute
+                  </div>
+                )}
+                {exercise.exercise.exerciseType === "custom" && (
+                  <div>
+                    {exercise.exercise.name} : custom exercise burned a total of{" "}
+                    {exercise.totalCalories} calories
+                  </div>
+                )}
               </div>
 
               <div className="diary-meal-calories">

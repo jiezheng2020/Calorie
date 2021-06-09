@@ -3,6 +3,7 @@ const CREATE_DIARY = "diary/CREATE_DIARY";
 const CREATE_FOODENTRY = "food/CREATE_FOODENTRY";
 const EDIT_FOODENTRY = "food/EDIT_FOODENTRY";
 const DELETE_FOODENTRY = "food/DELETE_FOODENTRY";
+const CREATE_EXERCISEENTRY = "exercise/CREATE_EXERCISEENTRY";
 const EDIT_EXERCISEENTRY = "exercise/EDIT_EXERCISEENTRY";
 const DELETE_EXERCISEENTRY = "exercise/DELETE_EXERCISEENTRY";
 
@@ -38,6 +39,13 @@ const deleteFoodEntries = (foodId) => {
   return {
     type: DELETE_FOODENTRY,
     foodId,
+  };
+};
+
+const createExerciseEntries = (exercise) => {
+  return {
+    type: CREATE_EXERCISEENTRY,
+    exercise,
   };
 };
 
@@ -131,6 +139,23 @@ export const deleteFoodEntry =
     }
   };
 
+export const createExerciseEntry =
+  ({ exerciseId, diaryId, totalCalories }) =>
+  async (dispatch) => {
+    const res = await fetch("/api/exercise/entry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ exerciseId, diaryId, totalCalories }),
+    });
+
+    if (res.ok) {
+      const exercise = await res.json();
+      dispatch(createExerciseEntries(exercise));
+    }
+  };
+
 export const editExerciseEntry =
   ({ exerciseId, totalCalories }) =>
   async (dispatch) => {
@@ -202,6 +227,12 @@ export default function reducer(state = initialState, action) {
       });
 
       newState[0].diaryFoods.splice(index, 1);
+      return newState;
+    }
+
+    case CREATE_EXERCISEENTRY: {
+      newState = [...state];
+      newState[0].diaryExercise.push(action.exercise);
       return newState;
     }
     case EDIT_EXERCISEENTRY: {
