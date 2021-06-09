@@ -15,7 +15,6 @@ const NavBar = () => {
         <Nav className="mr-auto">
           <Nav.Link href="/diary">Diary</Nav.Link>
           <Nav.Link href="/report">Reports</Nav.Link>
-          <Nav.Link href="/profile">Profile</Nav.Link>
         </Nav>
         <Nav>
           <LogoutButton />

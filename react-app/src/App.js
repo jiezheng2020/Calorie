@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Splash from "./components/Splash/Splash";
 import Diary from "./components/Diary/Diary";
+import Profile from "./components/Profile/Profile";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
             <User />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
-            <h1>My Home Page</h1>
+            <Profile />
           </ProtectedRoute>
           <ProtectedRoute path="/diary" exact={true}>
             <Diary />
