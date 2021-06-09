@@ -140,6 +140,17 @@ const Diary = () => {
           onChange={(e) => setcurrDate(e.target.value)}
         ></input>
       </div>
+      <div className="daily-goal-header">
+        Your Daily Goal is currently set to: {user.dailyGoal} calories
+      </div>
+      {currDiary && user.dailyGoal > totalCal && (
+        <div className="under-goal">
+          You are currently under your daily goal!
+        </div>
+      )}
+      {user.dailyGoal < totalCal && (
+        <div className="over-goal">You are currently over your daily goal!</div>
+      )}
       <div className="diary-food-container">
         <div className="diary-food-header">
           <h2 className="diary-container-label">

@@ -27,6 +27,18 @@
   height: auto;
 }
 
+.daily-goal-header {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.under-goal {
+  color: green;
+}
+
+.over-goal {
+  color: red;
+}
 .diary-food-container {
   background-color: white;
   border-radius: 10px;
