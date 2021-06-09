@@ -96,7 +96,7 @@
   position: relative;
 }
 .diary-meal-calories-text {
-  min-width: 30px;
+  width: 30px;
   text-align: right;
 }
 .calories-buttons {
