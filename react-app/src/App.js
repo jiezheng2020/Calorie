@@ -5,11 +5,10 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import Splash from "./components/Splash/Splash";
 import Diary from "./components/Diary/Diary";
 import Profile from "./components/Profile/Profile";
+import Specs from "./components/auth/Specs";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -42,12 +41,8 @@ function App() {
         </Route>
         <Route path="">
           <NavBar />
-          <ProtectedRoute path="/specs">User Specs</ProtectedRoute>
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <User />
+          <ProtectedRoute path="/specs" exact={true}>
+            <Specs />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <Profile />

@@ -1,0 +1,26 @@
+.specs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.specs-intro {
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.specs-fields-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 50%;
+  margin: 20px auto;
+}
+
+.specs-fields {
+  margin-right: 50%;
+}
+.specs-fields > label {
+  font-weight: bold;
+  margin-right: 20px;
+}
