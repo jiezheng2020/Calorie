@@ -11,6 +11,10 @@ const Specs = () => {
         Hello, {user}. Thank you for choosing Calorie. Please fill out the
         fields below to complete your registration process!
       </div>
+      <div>
+        The below info is required to help calculate your calorie expense
+        accurately
+      </div>
       <div className="specs-fields-container">
         <div className="specs-fields">
           <label>Weight</label>
@@ -26,7 +30,11 @@ const Specs = () => {
         </div>
         <div className="specs-fields">
           <label>Gender</label>
-          <input type="number" min="0" />
+          <select>
+            <option value="">--</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
       </div>
     </div>
