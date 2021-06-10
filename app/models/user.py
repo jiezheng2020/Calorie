@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
   height = db.Column(db.Integer, nullable=True)
-  weight = db.Column(db.Integer, nullable=False)
+  weight = db.Column(db.Integer, nullable=True)
   age = db.Column(db.Integer, nullable=True)
   gender = db.Column(db.Integer, nullable=True)
   dailyGoal = db.Column(db.Integer, nullable=False, default=2000)

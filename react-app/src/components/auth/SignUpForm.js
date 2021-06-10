@@ -121,11 +121,13 @@ const SignUpForm = () => {
               Demo
             </button>
             <div className="image-form-container"></div>
-            <div>
-              {errors.map((error) => (
-                <div>{error}</div>
-              ))}
-            </div>
+            {errors.length && (
+              <div className="auth-errors">
+                {errors.map((error) => (
+                  <div>{error}</div>
+                ))}
+              </div>
+            )}
           </form>
         </div>
       </div>

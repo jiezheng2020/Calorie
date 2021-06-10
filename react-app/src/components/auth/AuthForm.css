@@ -124,3 +124,12 @@
   cursor: pointer;
   opacity: 1;
 }
+
+.auth-errors {
+  background-color: #ff3856;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: white;
+  position: absolute;
+  top: 50px;
+}
