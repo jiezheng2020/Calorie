@@ -30,7 +30,7 @@ function Splash() {
     <div className="welcome-page-container">
       <div
         className="welcome-background"
-        style={{ transform: `translateY(${offsetY * 0.8}px)` }}
+        style={{ transform: `translateX(${offsetY * 0.055}px)` }}
       />
       <div
         className="welcome-icon1"
