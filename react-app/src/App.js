@@ -42,6 +42,7 @@ function App() {
         </Route>
         <Route path="">
           <NavBar />
+          <ProtectedRoute path="/specs">User Specs</ProtectedRoute>
           <ProtectedRoute path="/users" exact={true}>
             <UsersList />
           </ProtectedRoute>

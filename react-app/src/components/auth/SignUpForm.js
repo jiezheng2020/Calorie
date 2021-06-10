@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import { signUp, login } from "../../store/session";
 import "./AuthForm.css";
 
@@ -10,6 +10,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password));
       if (data.errors) {
         setErrors(data.errors);
+      } else {
+        history.push("/specs");
       }
     } else {
       setErrors(["password: Passwords must match"]);
