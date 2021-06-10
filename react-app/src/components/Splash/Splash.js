@@ -1,26 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
-import {
-  Animator,
-  ScrollContainer,
-  ScrollPage,
-  batch,
-  Fade,
-  FadeIn,
-  FadeOut,
-  Move,
-  MoveIn,
-  MoveOut,
-  Sticky,
-  StickyIn,
-  ZoomIn,
-} from "react-scroll-motion";
-
 import "./Splash.css";
-
-const FadeAnimation = batch(Move(0, 1000, 0, -200), Sticky(), FadeOut(1, 0));
+import website from "./website.PNG";
 
 function Splash() {
   const user = useSelector((state) => state.session.user);
@@ -34,70 +17,91 @@ function Splash() {
     history.push("/");
   }
 
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="page-container">
-      <ScrollContainer>
-        <ScrollPage page={0}>
-          <Animator animation={FadeAnimation}>
-            <div className="page page1">
-              <div className="page1-image"></div>
-              <div className="page1-right">
-                <h2>Welcome to Calorie!</h2>
-                <div className="page1-header">
-                  Free online calorie counter and diet plan.
-                </div>
-                <div className="page1-buttons">
-                  <button onClick={() => history.push("/login")}>Login</button>
-                  <button onClick={() => history.push("/sign-up")}>
-                    SignUp
-                  </button>
-                  <button onClick={() => handleDemo()}>Demo</button>
-                </div>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-        <ScrollPage page={1}>
-          <Animator animation={FadeAnimation}>
-            <div className="page page1">
-              <div className="page1-image"></div>
-              <div className="page1-right">
-                <h2>Welcome to Calorie!</h2>
-                <div className="page1-header">
-                  Free online calorie counter and diet plan.
-                </div>
-                <div className="page1-buttons">
-                  <button onClick={() => history.push("/login")}>Login</button>
-                  <button onClick={() => history.push("/sign-up")}>
-                    SignUp
-                  </button>
-                  <button onClick={() => handleDemo()}>Demo</button>
-                </div>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-        <ScrollPage page={2}>
-          <Animator animation={FadeAnimation}>
-            <div className="page page1">
-              <div className="page1-image"></div>
-              <div className="page1-right">
-                <h2>Welcome to Calorie!</h2>
-                <div className="page1-header">
-                  Free online calorie counter and diet plan.
-                </div>
-                <div className="page1-buttons">
-                  <button onClick={() => history.push("/login")}>Login</button>
-                  <button onClick={() => history.push("/sign-up")}>
-                    SignUp
-                  </button>
-                  <button onClick={() => handleDemo()}>Demo</button>
-                </div>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-      </ScrollContainer>
+    <div className="welcome-page-container">
+      <div
+        className="welcome-background"
+        style={{ transform: `translateY(${offsetY * 0.8}px)` }}
+      />
+      <div
+        className="welcome-icon1"
+        style={{
+          overflow: "hidden",
+          transform: `translateX(${offsetY * 0.7}px) translateY(${
+            offsetY * 0.7
+          }px)`,
+        }}
+      />
+
+      <div
+        className="welcome-icon2"
+        style={{
+          overflow: "hidden",
+          transform: `translateX(-${offsetY * 0.7}px) translateY(-${
+            offsetY * 0.7
+          }px)`,
+        }}
+      />
+
+      <div
+        className="welcome-icon3"
+        style={{
+          overflow: "hidden",
+          transform: `translateX(${offsetY * 0.1}px) translateY(-${
+            offsetY * 0.3
+          }px)`,
+        }}
+      />
+
+      <div
+        className="welcome-icon4"
+        style={{
+          overflow: "hidden",
+          transform: `translateY(-${offsetY * 0.225}px)`,
+        }}
+      />
+
+      <div className="welcome-content">
+        <div className="welcome-page1">
+          <h1>Calorie</h1>
+          <div>Calorie counting made easy!</div>
+          <button className="welcome-demo-btn" onClick={() => handleDemo()}>
+            Demo
+          </button>
+        </div>
+        <div className="welcome-page2">
+          <div>
+            Log into your diary daily and watch those numbers goes down!
+          </div>
+          <img className="website-pic" src={website} />
+        </div>
+        <div className="welcome-page3">
+          <div>Start your fitness journey today!</div>
+          <div className="welcome-auth-btns">
+            <button
+              className="welcome-demo-btn welcome-login"
+              onClick={() => history.push("/login")}
+            >
+              Login
+            </button>
+            <button
+              className="welcome-demo-btn"
+              onClick={() => history.push("/sign-up")}
+            >
+              Signup
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
