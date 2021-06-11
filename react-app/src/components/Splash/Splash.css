@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 2800px;
+  height: 2850px;
   overflow: hidden;
   position: relative;
   color: white;
@@ -46,7 +46,7 @@
   width: 600px;
   height: 600px;
   margin-right: 1300px;
-  top: 1400px;
+  top: 1450px;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -59,7 +59,7 @@
   width: 600px;
   height: 600px;
   margin-left: 0;
-  top: 2500px;
+  top: 2600px;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -134,4 +134,11 @@
 
 .welcome-login {
   margin-right: 20px;
+}
+
+.repo-btn,
+.repo-btn:hover {
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
 }

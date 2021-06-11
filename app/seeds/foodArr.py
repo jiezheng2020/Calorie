@@ -228,7 +228,7 @@ Food(name= 'Greengage',calories=2,serving='1 fruit (5 g)', foodType='default')
 Food(name= 'Guava',calories=37,serving='1 guava (55 g)', foodType='default'),
 Food(name= 'Jackfruit',calories=143,serving='1 cup (151 g)', foodType='default'),
 Food(name= 'Jujube',calories=22,serving='1 oz. (28.35 g)', foodType='default'),
-Food(name= 'Kiwi',calories=112,serving='1 liwi (183 g)', foodType='default'),
+Food(name= 'Kiwi',calories=112,serving='1 Kiwi (183 g)', foodType='default'),
 Food(name= 'Lemon',calories=17,serving='1 lemon (58 g)', foodType='default'),
 Food(name= 'Lime',calories=20,serving='1 lime (67 g)', foodType='default'),
 Food(name= 'Lychees',calories=7,serving='1 lychee (10 g)', foodType='default'),

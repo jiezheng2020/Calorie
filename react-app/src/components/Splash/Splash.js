@@ -36,8 +36,8 @@ function Splash() {
         className="welcome-icon1"
         style={{
           overflow: "hidden",
-          transform: `translateX(${offsetY * 0.7}px) translateY(${
-            offsetY * 0.7
+          transform: `translateX(${offsetY * 0.1}px) translateY(${
+            offsetY * 0.1
           }px)`,
         }}
       />
@@ -46,8 +46,8 @@ function Splash() {
         className="welcome-icon2"
         style={{
           overflow: "hidden",
-          transform: `translateX(-${offsetY * 0.7}px) translateY(-${
-            offsetY * 0.7
+          transform: `translateX(-${offsetY * 0.1}px) translateY(-${
+            offsetY * 0.1
           }px)`,
         }}
       />
@@ -83,6 +83,12 @@ function Splash() {
             Log into your diary daily and watch those numbers goes down!
           </div>
           <img className="website-pic" src={website} />
+          <a
+            className="welcome-demo-btn repo-btn"
+            href="https://github.com/jiezheng2020/Calorie"
+          >
+            Github
+          </a>
         </div>
         <div className="welcome-page3">
           <div>Start your fitness journey today!</div>
