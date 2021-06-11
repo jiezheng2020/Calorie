@@ -80,7 +80,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 };
 
 export const setSpecs =
-  ({ weight, height, age, gender, bmr }) =>
+  ({ weight, height, age, gender, bmr, type }) =>
   async (dispatch) => {
     const response = await fetch("/api/auth/", {
       method: "PUT",
@@ -93,6 +93,7 @@ export const setSpecs =
         age,
         gender,
         bmr,
+        type,
       }),
     });
 

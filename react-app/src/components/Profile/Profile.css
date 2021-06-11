@@ -1,8 +1,159 @@
+.userauth-page-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 1200px;
+}
+
+.userauth-page-background {
+  background-image: url("./90677.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+.userauth-page-image {
+  width: 500px;
+  height: 500px;
+  background-image: url("./eating.png");
+  position: absolute;
+  background-size: contain;
+  left: 60%;
+  top: 50px;
+  overflow: hidden;
+  z-index: -1;
+}
+
 .profile-container {
-  width: 1000px;
-  height: 600px;
-  border: solid black;
+  height: 100%;
+  width: 70%;
   margin: 0 auto;
   font-family: "Roboto", sans-serif !important;
+}
+
+.user-specs-container {
+  width: 800px;
+  height: 250px;
   background-color: white;
+  border-radius: 5px;
+  border: #bac0cc solid thin;
+  margin-top: 50px;
+}
+
+.user-specs-header {
+  display: flex;
+  color: white;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  font-weight: 500;
+  background-color: #325288;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px 16px;
+}
+
+.user-details-container {
+  display: flex;
+  align-items: center;
+  height: 80%;
+  width: 85%;
+  margin-left: 40px;
+}
+
+.user-profile-pic {
+  height: 120px;
+  width: 120px;
+  background-color: #f4f2fa;
+  padding: 10px 5px 0 5px;
+  border: #eeeeee solid thin;
+  border-radius: 100%;
+}
+
+.user-body-container {
+  height: 90%;
+  width: 100%;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.user-body-goal {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.user-body-other {
+  border-bottom: solid #eeeeee thin;
+}
+.user-goal-change {
+  margin-left: 5px;
+  border: none;
+  background-color: transparent;
+  color: rgb(0, 0, 255);
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.user-goal-change:hover {
+  color: rgb(91, 91, 253);
+}
+
+.user-prof-diary {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+}
+
+.user-prof-diary:hover {
+  cursor: pointer;
+}
+
+.diary-go {
+  background-color: #325288;
+  color: white;
+  margin-left: 10px;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+.about-me {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  border: solid #bac0cc thin;
+  padding: 32px 32px;
+  align-items: center;
+}
+
+.about-me-pic {
+  width: 200px;
+  height: 200px;
+  background-image: url("./kevin.jpg");
+  background-size: cover;
+  border-radius: 100%;
+  margin-right: 60px;
+}
+
+.about-me-blurb {
+  width: 70%;
+}
+
+.goal-edit-btn {
+  position: absolute;
+  left: 100px;
+  height: 30px;
+  width: 130px;
+}
+.fa-check-square {
+  color: green;
+  opacity: 0.9;
+}
+.fa-check-square:hover {
+  opacity: 1;
+  cursor: pointer;
 }

@@ -35,11 +35,15 @@ def setSpecs():
 
     user = User.query.get(current_user.id)
 
-    user.age = data['age']
-    user.dailyGoal = data['bmr'] - 100
-    user.gender = data['gender']
-    user.height = data['height']
-    user.weight = data['weight']
+    if data["type"] == "edit":
+        user.dailyGoal = data['bmr']
+
+    else:
+        user.age = data['age']
+        user.dailyGoal = data['bmr'] - 100
+        user.gender = data['gender']
+        user.height = data['height']
+        user.weight = data['weight']
 
     db.session.add(user)
     db.session.commit()

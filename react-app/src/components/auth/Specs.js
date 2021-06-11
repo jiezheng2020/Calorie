@@ -27,7 +27,14 @@ const Specs = () => {
 
   const handleCreate = async () => {
     await dispatch(
-      setSpecs({ gender, weight: weight * 2.205, height, age, bmr })
+      setSpecs({
+        gender,
+        weight: weight * 2.205,
+        height,
+        age,
+        bmr,
+        type: "initial",
+      })
     );
     history.push("/");
   };
