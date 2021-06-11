@@ -2,6 +2,7 @@
   background-color: #325288;
   font-family: "Roboto", sans-serif;
   border-bottom: #b4a3e9 solid thin;
+  font-family: "Roboto", sans-serif !important;
 }
 
 .navbar-brand {

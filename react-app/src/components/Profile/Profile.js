@@ -18,7 +18,7 @@ const Profile = () => {
   }, [dispatch, currDate]);
 
   return (
-    <div className="auth-container">
+    <div className="userauth-page-container">
       <div className="profile-container">User Profile</div>
     </div>
   );

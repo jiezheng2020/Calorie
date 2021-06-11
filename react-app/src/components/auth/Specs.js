@@ -84,7 +84,7 @@ const Specs = () => {
           </select>
         </div>
         <div style={{ fontWeight: "bold", margin: "20px 0" }}>
-          Current calculted BMR: {bmr ? `${bmr} calories` : "N/A"}
+          Current calculated BMR: {bmr ? `${bmr} calories` : "N/A"}
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button

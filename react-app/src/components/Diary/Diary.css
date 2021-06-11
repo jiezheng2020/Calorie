@@ -3,6 +3,7 @@
   width: 60%;
   flex-direction: column;
   margin: 30px auto;
+  font-family: "Roboto", sans-serif !important;
 }
 .diary-header {
   display: flex;
