@@ -91,7 +91,9 @@ function Splash() {
           </a>
         </div>
         <div className="welcome-page3">
-          <div>Start your fitness journey today!</div>
+          <div style={{ "text-shadow": "#000034 1px 0 10px" }}>
+            Start your fitness journey today!
+          </div>
           <div className="welcome-auth-btns">
             <button
               className="welcome-demo-btn welcome-login"
