@@ -15,7 +15,7 @@
 
 .search-results {
   position: absolute;
-  height: 100px;
+  max-height: 100px;
   width: 182px;
   top: 80px;
   overflow: auto;
