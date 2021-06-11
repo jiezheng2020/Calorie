@@ -1,6 +1,6 @@
 # Welcome to Calorie!
 
-### **Live Link: [Harmony](https://calorie-aa.herokuapp.com/)**
+### **Live Link: [Calorie](https://calorie-aa.herokuapp.com/)**
 
 **Calorie** is a calorie counting application personalized to the user's specifications. The site allows users to create diary entries for each day and log their food and exercises, making calorie tracking easier than ever.
 
