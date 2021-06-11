@@ -10,9 +10,9 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
   height = db.Column(db.Integer, nullable=True)
-  weight = db.Column(db.Integer, nullable=True)
+  weight = db.Column(db.Integer, nullable=True, default=60)
   age = db.Column(db.Integer, nullable=True)
-  gender = db.Column(db.Integer, nullable=True)
+  gender = db.Column(db.String(40), nullable=True)
   dailyGoal = db.Column(db.Integer, nullable=False, default=2000)
 
   diaries_owned= db.relationship('Diary', back_populates='owner')

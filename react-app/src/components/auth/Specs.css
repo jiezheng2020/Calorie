@@ -16,9 +16,8 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 50%;
-  margin: 20px auto;
+  width: 30%;
+  margin: 30px auto;
 }
 
 .specs-fields > label {
@@ -28,6 +27,28 @@
 }
 
 .specs-fields > input,
-.spec-fields > select {
-  width: 200px;
+.specs-fields > select {
+  width: 70px;
+}
+
+.confirm-btn {
+  width: 100px;
+  border: none;
+  background-color: #325288;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.confirm-btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.confirm-btn:disabled {
+  opacity: 0.65;
+  cursor: default;
 }

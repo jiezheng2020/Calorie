@@ -79,6 +79,29 @@ export const signUp = (username, email, password) => async (dispatch) => {
   return {};
 };
 
+export const setSpecs =
+  ({ weight, height, age, gender, bmr }) =>
+  async (dispatch) => {
+    const response = await fetch("/api/auth/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        weight,
+        height,
+        age,
+        gender,
+        bmr,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+    }
+  };
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

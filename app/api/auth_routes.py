@@ -27,6 +27,23 @@ def authenticate():
         return current_user.to_dict()
     return {'errors': ['Unauthorized']}
 
+@auth_routes.route('/' , methods=['PUT'])
+@login_required
+def setSpecs():
+    data = request.json
+
+    user = User.query.get(current_user.id)
+
+    user.age = data['age']
+    user.dailyGoal = data['bmr'] - 100
+    user.gender = data['gender']
+    user.height = data['height']
+    user.weight = data['weight']
+
+    db.session.add(user)
+    db.session.commit()
+
+    return user.to_dict()
 
 @auth_routes.route('/login', methods=['POST'])
 def login():
