@@ -1,4 +1,4 @@
-# <img src="frontend/public/favicon.ico" width="25" height="25"> # Welcome to Calorie!
+# <img src="react-app/public/favicon.ico" width="25" height="25"> # Welcome to Calorie!
 
 ### **Live Link: [Calorie](https://calorie-aa.herokuapp.com/)**
 
