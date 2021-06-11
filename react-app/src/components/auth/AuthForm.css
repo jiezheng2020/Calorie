@@ -115,9 +115,10 @@
 
 .logout-btn {
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   font-weight: bold;
   opacity: 0.9;
+  background-color: ##f4f2fa;
 }
 
 .logout-btn:hover {
