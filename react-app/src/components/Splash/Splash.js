@@ -80,7 +80,7 @@ function Splash() {
         </div>
         <div className="welcome-page2">
           <div>
-            Log into your diary daily and watch those numbers goes down!
+            Log into your daily diary and watch those numbers goes down!
           </div>
           <img className="website-pic" src={website} />
           <a

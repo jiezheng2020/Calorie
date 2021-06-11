@@ -107,7 +107,7 @@
   display: flex;
   position: absolute;
   top: 3px;
-  left: 50px;
+  left: 55px;
 }
 
 .calories-edit {
@@ -115,7 +115,8 @@
 }
 
 .calories-remove {
-  color: rgb(196, 0, 0);
+  color: #325288;
+  margin-left: 3px;
 }
 
 .calories-remove:hover {

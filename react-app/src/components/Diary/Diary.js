@@ -198,7 +198,7 @@ const Diary = () => {
 
                   <i
                     onClick={() => handleDeleteFood(food)}
-                    className="fas fa-minus-circle calories-remove"
+                    className="fas fa-trash-alt calories-remove"
                   ></i>
                 </div>
               </div>
@@ -245,7 +245,7 @@ const Diary = () => {
 
                   <i
                     onClick={() => handleDeleteFood(food)}
-                    className="fas fa-minus-circle calories-remove"
+                    className="fas fa-trash-alt calories-remove"
                   ></i>
                 </div>
               </div>
@@ -292,7 +292,7 @@ const Diary = () => {
 
                   <i
                     onClick={() => handleDeleteFood(food)}
-                    className="fas fa-minus-circle calories-remove"
+                    className="fas fa-trash-alt calories-remove"
                   ></i>
                 </div>
               </div>
@@ -363,7 +363,7 @@ const Diary = () => {
 
                   <i
                     onClick={() => handleDeleteExercise(exercise)}
-                    className="fas fa-minus-circle calories-remove"
+                    className="fas fa-trash-alt calories-remove"
                   ></i>
                 </div>
               </div>

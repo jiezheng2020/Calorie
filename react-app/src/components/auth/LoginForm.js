@@ -81,7 +81,7 @@ const LoginForm = () => {
               Demo
             </button>
             <div className="image2-form-container"></div>
-            {errors.length && (
+            {errors.length > 0 && (
               <div className="auth-errors">
                 {errors.map((error) => (
                   <div>{error}</div>
