@@ -23,7 +23,7 @@ Check out the [wiki](https://github.com/jiezheng2020/Calorie/wiki) for more info
 
 ## Features
 
-- Sign up a new account and log in
+- Sign up a new account and log in, or log in as demo user
 - Create / Edit / Search Diary entries
 - Search / Create / Edit / Delete Food and Exercise entries
 - Receive a personalized daily caloric goal based on your specifications, or set a custom goal!
