@@ -124,7 +124,11 @@ const SignUpForm = () => {
             <button className="userform-btn" type="submit">
               Sign Up
             </button>
-            <button onClick={() => handleDemo()} className="demo-btn">
+            <button
+              type="button"
+              onClick={() => handleDemo()}
+              className="demo-btn"
+            >
               Demo
             </button>
             <div className="image-form-container"></div>

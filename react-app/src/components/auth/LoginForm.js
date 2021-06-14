@@ -27,8 +27,7 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleDemo = async (e) => {
-    e.preventDefault();
+  const handleDemo = async () => {
     setEmail("demo@@.io");
     setPassword("password");
     await dispatch(login("demo@aa.io", "password"));
@@ -78,7 +77,11 @@ const LoginForm = () => {
             <button className="userform-btn" type="submit">
               Login
             </button>
-            <button onClick={(e) => handleDemo(e)} className="demo-btn">
+            <button
+              type="button"
+              onClick={(e) => handleDemo(e)}
+              className="demo-btn"
+            >
               Demo
             </button>
             <div className="image2-form-container"></div>
