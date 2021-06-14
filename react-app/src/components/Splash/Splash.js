@@ -82,7 +82,7 @@ function Splash() {
           <div>
             Log into your daily diary and watch those numbers goes down!
           </div>
-          <img className="website-pic" src={website} />
+          <img alt="" className="website-pic" src={website} />
           <a
             className="welcome-demo-btn repo-btn"
             href="https://github.com/jiezheng2020/Calorie"

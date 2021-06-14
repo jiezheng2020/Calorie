@@ -37,7 +37,7 @@ const Profile = () => {
               User Specifications for {user.username}
             </div>
             <div className="user-details-container">
-              <img src={userpic} className="user-profile-pic" />
+              <img alt="" src={userpic} className="user-profile-pic" />
               <div className="user-body-container">
                 <div className="user-body-goal">
                   <div
@@ -117,11 +117,11 @@ const Profile = () => {
               <a href="https://github.com/jiezheng2020">
                 <i
                   style={{ marginRight: "20px" }}
-                  class="fab fa-github-square"
+                  className="fab fa-github-square"
                 ></i>
               </a>
               <a href="https://www.linkedin.com/in/kevin-zheng-1387a7138/">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
           </div>

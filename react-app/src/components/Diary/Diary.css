@@ -21,11 +21,20 @@
   display: inline;
   font-size: 15px;
   font-weight: bold;
-  padding: 9px 35px;
+  padding: 5px 30px;
   position: relative;
   border-radius: 5px;
   width: auto;
   height: auto;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  font-size: 25px;
+  background-image: url("https://image.flaticon.com/icons/png/128/4285/4285657.png");
+}
+
+.date-input.date-input::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
 }
 
 .daily-goal-header {

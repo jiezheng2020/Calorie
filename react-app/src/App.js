@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
@@ -12,7 +12,7 @@ import Specs from "./components/auth/Specs";
 import { authenticate } from "./store/session";
 
 function App() {
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;

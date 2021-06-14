@@ -27,10 +27,11 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleDemo = async () => {
-    setEmail("demo@aa.io");
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    setEmail("demo@@.io");
     setPassword("password");
-    await dispatch(login(email, password));
+    await dispatch(login("demo@aa.io", "password"));
   };
 
   if (user) {
@@ -77,14 +78,14 @@ const LoginForm = () => {
             <button className="userform-btn" type="submit">
               Login
             </button>
-            <button onClick={() => handleDemo()} className="demo-btn">
+            <button onClick={(e) => handleDemo(e)} className="demo-btn">
               Demo
             </button>
             <div className="image2-form-container"></div>
             {errors.length > 0 && (
               <div className="auth-errors">
-                {errors.map((error) => (
-                  <div>{error}</div>
+                {errors.map((error, i) => (
+                  <div key={i}>{error}</div>
                 ))}
               </div>
             )}

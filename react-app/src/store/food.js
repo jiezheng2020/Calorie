@@ -1,5 +1,4 @@
 const GET_FOODS = "food/GET_FOODS";
-const EDIT_FOOD = "food/EDIT_FOOD";
 
 const getFoods = (foods) => {
   return {
@@ -38,7 +37,6 @@ export const createFood =
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  let newState = {};
   switch (action.type) {
     case GET_FOODS: {
       return action.foods;

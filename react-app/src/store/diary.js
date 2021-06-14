@@ -208,7 +208,7 @@ export default function reducer(state = initialState, action) {
       let index = 0;
       newState = [...state];
       newState[0].diaryFoods.forEach((entry, i) => {
-        if (entry.id == action.food.id) {
+        if (entry.id === action.food.id) {
           index = i;
         }
       });
@@ -221,7 +221,7 @@ export default function reducer(state = initialState, action) {
       let index = 0;
       newState = [...state];
       newState[0].diaryFoods.forEach((entry, i) => {
-        if (entry.id == action.foodId) {
+        if (entry.id === action.foodId) {
           index = i;
         }
       });
@@ -239,7 +239,7 @@ export default function reducer(state = initialState, action) {
       let index = 0;
       newState = [...state];
       newState[0].diaryExercise.forEach((entry, i) => {
-        if (entry.id == action.exercise.id) {
+        if (entry.id === action.exercise.id) {
           index = i;
         }
       });
@@ -252,7 +252,7 @@ export default function reducer(state = initialState, action) {
       let index = 0;
       newState = [...state];
       newState[0].diaryExercise.forEach((entry, i) => {
-        if (entry.id == action.exerciseId) {
+        if (entry.id === action.exerciseId) {
           index = i;
         }
       });

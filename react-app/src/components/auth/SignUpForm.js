@@ -17,15 +17,19 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data.errors) {
-        setErrors(data.errors);
-      } else {
-        history.push("/specs");
-      }
+    if (!email.includes("@")) {
+      setErrors(["email: Email must be properly formatted!"]);
     } else {
-      setErrors(["password: Passwords must match"]);
+      if (password === repeatPassword) {
+        const data = await dispatch(signUp(username, email, password));
+        if (data.errors) {
+          setErrors(data.errors);
+        } else {
+          history.push("/specs");
+        }
+      } else {
+        setErrors(["password: Passwords must match"]);
+      }
     }
   };
 
@@ -126,8 +130,8 @@ const SignUpForm = () => {
             <div className="image-form-container"></div>
             {errors.length > 0 && (
               <div className="auth-errors">
-                {errors.map((error) => (
-                  <div>{error}</div>
+                {errors.map((error, i) => (
+                  <div key={i}>{error}</div>
                 ))}
               </div>
             )}

@@ -37,7 +37,6 @@ export const createExercise =
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  let newState = {};
   switch (action.type) {
     case GET_EXERCISES: {
       return action.exercises;

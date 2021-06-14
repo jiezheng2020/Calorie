@@ -143,7 +143,12 @@ function FoodModal(props) {
                 disabled={defaultFood}
               />
             </div>
-            <label>Select Meal Type</label>
+            <div style={{ display: "flex", marginTop: "10px" }}>
+              <label>Select Meal Type</label>
+              <span
+                style={{ marginLeft: "5px", color: "red" }}
+              >{`(required)`}</span>
+            </div>
             <div>
               <select onChange={(e) => setmealType(e.target.value)}>
                 <option value="">--</option>
@@ -152,7 +157,12 @@ function FoodModal(props) {
                 <option value="dinner">Dinner</option>
               </select>
             </div>
-            <label>Input Serving Amount</label>
+            <div style={{ display: "flex", marginTop: "10px" }}>
+              <label>Input Serving Amount</label>
+              <span
+                style={{ marginLeft: "5px", color: "red" }}
+              >{`(required)`}</span>
+            </div>
             <div>
               <input
                 type="number"

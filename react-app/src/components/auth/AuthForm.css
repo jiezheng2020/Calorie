@@ -3,6 +3,7 @@
   height: 1100px;
   display: flex;
   background-color: white;
+  overflow: hidden;
 }
 
 .form-image-container {
