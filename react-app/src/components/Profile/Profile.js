@@ -61,6 +61,7 @@ const Profile = () => {
                       onChange={(e) => setGoal(e.target.value)}
                       type="number"
                       min="0"
+                      value={goal}
                     />
                     <i
                       onClick={() => handleGoal()}

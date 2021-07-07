@@ -19,6 +19,7 @@
   width: 182px;
   top: 80px;
   overflow: auto;
+  cursor: pointer;
 }
 
 .add-meal-bottom {
